@@ -71,47 +71,48 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 20px;
         }
 
         .card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            border: 2px solid #000;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
         }
 
         .card h3 {
-            margin: 0 0 10px;
-            font-size: 1.4rem;
-            color: #333;
+            margin: 15px 0;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
 
         .card p {
-            margin: 0 0 10px;
+            margin: 10px 0;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
             color: #555;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 15px;
-        }
-
-        a {
-            color: #c39e6d;
-            text-decoration: none;
             font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .card a:hover {
+            color: #2f6a1f;
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
 
         footer {
@@ -167,7 +168,9 @@
     <meta property="og:title" content="Aswin Pradeep - Backend Developer | AI & ML | Portfolio">
     <meta property="og:description"
         content="Explore Aswin Pradeep's developer portfolio featuring projects in backend development, machine learning, and AI. Learn more about my work and skills.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/aswinpradeepc/website/refs/heads/main/aswin.jpeg"> <!-- Link to an image for preview on social media -->
+    <meta property="og:image"
+        content="https://raw.githubusercontent.com/aswinpradeepc/website/refs/heads/main/aswin.jpeg">
+    <!-- Link to an image for preview on social media -->
     <meta property="og:url" content="https://aswin.radr.in">
     <meta property="og:type" content="website">
 
@@ -364,8 +367,8 @@
     </main>
     <footer>
         <p>
-            <a href="mailto:aswinpradeepc@gmail.com">Email</a> | 
-            <a href="https://www.linkedin.com/in/aswinpradeepc" target="_blank">LinkedIn</a> | 
+            <a href="mailto:aswinpradeepc@gmail.com">Email</a> |
+            <a href="https://www.linkedin.com/in/aswinpradeepc" target="_blank">LinkedIn</a> |
             <a href="https://github.com/aswinpradeepc" target="_blank">GitHub</a>
         </p>
     </footer>
