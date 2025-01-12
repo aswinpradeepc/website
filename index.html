@@ -43,6 +43,7 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
+            margin-top: 3px;
         }
 
         main {
@@ -167,6 +168,133 @@
         li {
             margin-bottom: 15px;
         }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            color: white;
+            background-color: #f4ecd8;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2f3640;
+        }
+
+        .navbar .menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .menu a {
+            text-decoration: none;
+            color: #2f3640;
+            transition: color 0.3s;
+        }
+
+        .navbar .menu a:hover {
+            color: green;
+        }
+
+        .navbar .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Drawer menu styles */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #f4ecd8;
+            color: black;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            transition: left 0.3s;
+            z-index: 999;
+        }
+
+        .drawer.open {
+            left: 0;
+        }
+
+        .drawer .menu {
+            flex-direction: column;
+            margin: 80px 0 0;
+            padding: 0 20px;
+        }
+
+        .drawer .menu a {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .navbar .menu {
+                display: none;
+            }
+
+            .navbar .hamburger {
+                display: block;
+                color: #2f3640;
+            }
+        }
+        .drawer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #f4ecd8;
+        color: black;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: left 0.3s;
+        z-index: 999;
+    }
+
+    .drawer-footer {
+        padding: 20px;
+        border-top: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .contact-info a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: #2f3640;
+        transition: color 0.3s;
+    }
+
+    .contact-info a:hover {
+        color: green;
+    }
+
+    .contact-icon {
+        font-size: 1.2rem;
+    }
     </style>
     <meta name="twitter:title" content="Aswin Pradeep - Backend Developer | AI & ML | Portfolio">
     <meta name="twitter:description"
@@ -203,6 +331,58 @@
 </head>
 
 <body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">aswinpradeepc</div>
+        <div class="menu">
+            <a href="#projects">Projects</a>
+            <a href="#skills">Technical Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#interests">Other Interests</a>
+        </div>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+    </div>
+
+    <!-- Drawer Menu -->
+    <div class="drawer" id="drawer">
+        <div class="menu">
+            <a href="#projects">Projects</a><br>
+            <a href="#skills">Technical Skills</a><br>
+            <a href="#experience">Experience</a><br>
+            <a href="#achievements">Achievements</a><br>
+            <a href="#interests">Other Interests</a><br>
+        </div>
+        <div class="drawer-footer">
+            <div class="contact-info">
+                <a href="mailto:aswinpradeepc@gmail.com">
+                    Email
+                </a>
+                <a href="https://linkedin.com/in/aswinpradeepc" target="_blank">
+                    LinkedIn
+                </a>
+                <a href="https://github.com/aswinpradeepc" target="_blank">
+                     GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const drawer = document.getElementById('drawer');
+
+        hamburger.addEventListener('click', () => {
+            drawer.classList.toggle('open');
+        });
+
+        // Close the drawer when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!drawer.contains(event.target) && !hamburger.contains(event.target)) {
+                drawer.classList.remove('open');
+            }
+        });
+    </script>
     <header>
         <img src="aswin.jpeg" alt="Aswin Pradeep's Photo">
         <h1>Aswin Pradeep</h1>
@@ -215,7 +395,7 @@
                 address real-world challenges. Checkout my <a href="resume.pdf">resume</a>. Let's collaborate and create
                 something extraordinary! </p>
         </section>
-        <section>
+        <section id="projects">
             <h2>Projects</h2>
             <div class="cards">
                 <div class="card">
@@ -330,7 +510,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section id="skills">
             <h2>Technical Skills</h2>
 
             <h3>Programming Languages</h3>
@@ -386,9 +566,7 @@
                     alt="Linux" />
             </p>
         </section>
-
-
-        <section>
+        <section id="experience">
             <h2>Experience</h2>
             <ul>
                 <li>
@@ -421,7 +599,7 @@
                 </li>
             </ul>
         </section>
-        <section>
+        <section id="achievements">
             <h2>Achievements</h2>
             <div class="cards">
                 <div>
@@ -435,7 +613,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section id="interests">
             <h2>Other Interests</h2>
             <div class="cards">
                 <div>
@@ -458,7 +636,6 @@
                 </div>
             </div>
         </section>
-
     </main>
     <footer>
         <p>
