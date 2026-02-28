@@ -576,24 +576,13 @@ a.subtle:hover {
   color: var(--ink);
   transition: background 0.15s, color 0.15s;
   letter-spacing: 0.02em;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .rick-btn:hover {
   background: var(--ink);
   color: var(--bg);
-}
-
-.rick-embed {
-  display: none;
-  margin-top: 1.25rem;
-}
-
-.rick-embed iframe {
-  width: 100%;
-  max-width: 480px;
-  height: 270px;
-  border: 1px solid var(--faint);
-  border-radius: 2px;
 }
 
 /* ── CONTACT ── */

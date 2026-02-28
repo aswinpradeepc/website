@@ -36,16 +36,7 @@
     <!-- Rick roll — hidden until no posts found -->
     <div class="rick-zone" id="rick-zone" style="display:none;">
       <p>Nothing published yet. Probably drafting something profound.</p>
-      <button class="rick-btn" id="rick-btn">view secret drafts.exe</button>
-      <div class="rick-embed" id="rick-embed">
-        <iframe
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-          title="definitely my drafts"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen>
-        </iframe>
-      </div>
+      <a class="rick-btn" id="rick-btn" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener">view secret drafts</a>
     </div>
   </section>
 </main>
@@ -94,13 +85,7 @@
     rickZone.style.display = 'block';
   }
 
-  // Rick roll toggle
-  document.getElementById('rick-btn')?.addEventListener('click', function () {
-    const embed = document.getElementById('rick-embed');
-    const isHidden = embed.style.display === 'none' || embed.style.display === '';
-    embed.style.display = isHidden ? 'block' : 'none';
-    this.textContent = isHidden ? 'ok ok i get it' : 'view secret drafts.exe';
-  });
+  // Rick roll - direct link (no JavaScript needed)
 })();
 </script>
 </body>

@@ -15,6 +15,7 @@
             <a href="mailto:${meta.email}">Email</a>
             <a href="${meta.links.github}" target="_blank" rel="noopener">GitHub</a>
             <a href="${meta.links.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="${meta.links.x}" target="_blank" rel="noopener">X</a>
             <a href="${meta.links.devbio}" target="_blank" rel="noopener">devb.io</a>
           </div>
           <span class="footer-copy">© ${meta.name} ${year}</span>

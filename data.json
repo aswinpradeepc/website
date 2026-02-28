@@ -2,11 +2,12 @@
   "meta": {
     "name": "Aswin Pradeep C",
     "tagline": "Software Engineer. I build backends, break things, and occasionally fix them.",
-    "email": "aswinpradeepc@gmail.com",
+    "email": "hi@aswinpradeepc.com",
     "location": "Kochi, Kerala",
     "links": {
       "github": "https://github.com/aswinpradeepc",
       "linkedin": "https://linkedin.com/in/aswinpradeepc",
+      "x": "https://x.com/aswinpradeepc",
       "devbio": "https://devb.io/aswinpradeepc"
     },
     "medium_username": "aswinpradeepc"
@@ -14,7 +15,7 @@
 
   "now": "Currently building software at Kireap. Contributing to devb.io — an open-source developer bio platform. Previously interned at Geojit Financial Services, where I worked on an LLM-based search system using RAG for financial data retrieval. Finished my B.Tech in CS at CUSAT, class of 2025.",
 
-  "about": "I'm a backend engineer from Kerala. I care about systems that are simple to reason about, fast to iterate on, and don't fall apart under load. I organized Make-A-Ton, South India's largest hackathon — equal parts chaos and genuinely fun. Outside work: coffee, bad puns, and side projects I may or may not finish.",
+  "about": "I'm a backend engineer from Kerala. I care about systems that are simple to reason about, fast to iterate on, and don't fall apart under load. I organized Make-A-Ton, South India's largest hackathon — equal parts chaos and genuinely fun. Outside work: chai, bad puns, and side projects I may or may not finish.",
 
   "experience": [
     {
