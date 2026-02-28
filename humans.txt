@@ -1,0 +1,12 @@
+/* TEAM */
+Developer: Aswin Pradeep C
+Contact: aswinpradeepc@gmail.com
+Location: Kochi, Kerala
+GitHub: https://github.com/aswinpradeepc
+LinkedIn: https://linkedin.com/in/aswinpradeepc
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript
+Components: Vanilla JS, JSON data
+Software: VS Code
+Last update: 2026/03/01

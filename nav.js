@@ -2,7 +2,7 @@
 (function () {
   const pages = [
     { href: 'index.html',    label: 'Home'     },
-    { href: 'work.html',     label: 'Work'     },
+    { href: 'experience.html',     label: 'Experience'     },
     { href: 'projects.html', label: 'Projects' },
     { href: 'events.html',   label: 'Events'   },
     { href: 'writing.html',  label: 'Writing'  },
