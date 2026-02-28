@@ -42,4 +42,39 @@
 
   inner.appendChild(ul);
   nav.appendChild(inner);
+
+  // ── Swipe Navigation (Mobile) ──
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const swipeThreshold = 75; // minimum distance for swipe
+
+  function handleSwipe() {
+    const swipeDistance = touchEndX - touchStartX;
+    if (Math.abs(swipeDistance) < swipeThreshold) return;
+
+    const currentIndex = pages.findIndex(p => p.href === current);
+    if (currentIndex === -1) return;
+
+    let nextIndex;
+    if (swipeDistance > 0) {
+      // Swipe right → previous page
+      nextIndex = currentIndex - 1;
+    } else {
+      // Swipe left → next page
+      nextIndex = currentIndex + 1;
+    }
+
+    if (nextIndex >= 0 && nextIndex < pages.length) {
+      window.location.href = pages[nextIndex].href;
+    }
+  }
+
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
 })();

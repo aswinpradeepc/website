@@ -728,12 +728,105 @@ a.subtle:hover {
 }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  /* Hide logo on mobile */
+  .nav-logo {
+    display: none;
+  }
+
+  /* Make nav scrollable horizontally */
+  .nav-inner {
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .nav-links {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    gap: 0;
+    padding: 0 1rem;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .nav-links a {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  /* Add swipe indicator */
+  #nav::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.92));
+    pointer-events: none;
+  }
+
+  /* Make footer more compact */
+  .footer-links {
+    gap: 1rem;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+  }
+
+  /* Improve touch targets */
+  .home-nav-links a {
+    padding: 0.25rem 0;
+    font-size: 0.88rem;
+  }
+
+  /* Better project spacing */
+  .project-item {
+    padding-bottom: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Better event images */
+  .event-image, .event-image-placeholder {
+    max-width: 100%;
+  }
+
+  /* Compact education block */
+  .edu-block {
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 520px) {
   main { padding: 2.5rem 1.25rem 4rem; }
   .home-name { font-size: 1.6rem; }
-  .nav-links a { padding: 0.35rem 0.45rem; font-size: 0.78rem; }
+  .page-title { font-size: 1.5rem; }
+  .nav-links a { padding: 0.35rem 0.6rem; font-size: 0.8rem; }
   .timeline-header { flex-direction: column; gap: 0; }
   .event-header { flex-direction: column; gap: 0; }
   .skills-table td:first-child { width: 100px; padding-right: 1rem; }
   .footer-inner { flex-direction: column; gap: 0.5rem; }
+  
+  /* Better spacing for mobile */
+  .timeline { padding-left: 1.25rem; }
+  .timeline-dot { left: -1.25rem; }
+  .section-label { font-size: 0.65rem; }
+  .page-label { font-size: 0.65rem; }
+  
+  /* Improve readability */
+  .timeline-bullets li { font-size: 0.88rem; }
+  .project-desc, .event-desc, .oss-desc { font-size: 0.88rem; }
+  .about-block p, .now-block p { font-size: 0.92rem; }
+  
+  /* Better contact page */
+  .contact-email { font-size: 1.05rem; }
+  .contact-social-row { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  .contact-social-row .platform { min-width: auto; }
 }
