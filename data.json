@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "name": "Aswin Pradeep C",
+    "tagline": "Software Engineer. I build backends, break things, and occasionally fix them.",
+    "email": "aswinpradeepc@gmail.com",
+    "location": "Kochi, Kerala",
+    "links": {
+      "github": "https://github.com/aswinpradeepc",
+      "linkedin": "https://linkedin.com/in/aswinpradeepc",
+      "devbio": "https://devb.io/aswinpradeepc"
+    },
+    "medium_username": "aswinpradeepc"
+  },
+
+  "now": "Currently building software at Kireap. Contributing to devb.io — an open-source developer bio platform. Previously interned at Geojit Financial Services, where I worked on an LLM-based search system using RAG for financial data retrieval. Finishing up my B.Tech in CS at CUSAT, class of 2025.",
+
+  "work": [
+    {
+      "company": "Kireap",
+      "role": "Software Engineer",
+      "period": "2025 – Present",
+      "location": "Kochi, Kerala",
+      "bullets": [
+        "Building and maintaining core backend systems.",
+        "Full-time role post-graduation."
+      ],
+      "tech": ["Python", "FastAPI"]
+    },
+    {
+      "company": "Geojit Financial Services Ltd",
+      "role": "Machine Learning Intern",
+      "period": "Dec 2024 – 2025",
+      "location": "Kochi, Kerala",
+      "bullets": [
+        "Developed an LLM-based search system with RAG architecture for enhanced financial data retrieval.",
+        "Automated manual processes with machine learning to improve operational efficiency."
+      ],
+      "tech": ["LLMs", "RAG", "Azure Cognitive Services", "Python"]
+    },
+    {
+      "company": "Lascade LLC",
+      "role": "Backend Developer Intern",
+      "period": "Jul 2024 – Aug 2024",
+      "location": "Remote",
+      "bullets": [
+        "Built RESTful APIs for the travel module with input validation and error handling.",
+        "Reduced response times significantly on high-traffic endpoints using Redis caching."
+      ],
+      "tech": ["Node.js", "Express.js", "MongoDB", "Redis"]
+    },
+    {
+      "company": "Agua India",
+      "role": "ML Engineer Intern",
+      "period": "Jun 2024",
+      "location": "Kochi, Kerala",
+      "bullets": [
+        "Built a prototype using OpenCV for automated coupon code extraction from delivery images.",
+        "Implemented ROI detection to filter irrelevant text and streamline water delivery operations."
+      ],
+      "tech": ["OpenCV", "YOLO", "Python", "Mapbox"]
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "LinkRadr",
+      "desc": "Scalable URL shortener with custom links, OTP-based sign-in, and Docker + GitHub Actions CI/CD on AWS EC2.",
+      "tech": ["Django", "PostgreSQL", "Docker", "GitHub Actions", "AWS EC2", "Nginx"],
+      "github": "https://github.com/aswinpradeepc/linkradr",
+      "live": "https://link.radr.in"
+    },
+    {
+      "name": "EduRider",
+      "desc": "Route management system for school buses — role-based APIs for drivers and students, deployed on AWS with Flutter frontend integration.",
+      "tech": ["Django", "PostgreSQL", "Docker", "AWS", "Nginx"],
+      "github": "https://github.com/aswinpradeepc/edurider",
+      "live": "https://edurider.radr.in"
+    },
+    {
+      "name": "SOE Project Hub",
+      "desc": "Academic project management system with role-based access, plagiarism checking, team management, and document uploads.",
+      "tech": ["Django", "JavaScript", "SQLite"],
+      "github": "https://github.com/aswinpradeepc/soe-project-hub",
+      "live": null
+    }
+  ],
+
+  "opensource": [
+    {
+      "project": "devb.io",
+      "desc": "Open-source developer bio platform. Contributor — check the GitHub for specifics.",
+      "url": "https://github.com/bestbug456/devbio",
+      "profile": "https://devb.io/aswinpradeepc"
+    }
+  ],
+
+  "achievements": [
+    "Led organization of Make-A-Ton — South India's largest hackathon, 200+ participants, 30-member team. Secured sponsorships from GitHub, Logitech, MLH, Orkes, and GeeksForGeeks.",
+    "First Prize, Project Expo — Summer Startup Festival 2023, GEC Thrissur."
+  ],
+
+  "skills": {
+    "Languages": ["Python", "JavaScript", "SQL"],
+    "Backend": ["FastAPI", "Django", "Node.js / Express.js"],
+    "Databases": ["PostgreSQL", "MongoDB", "Redis", "MySQL"],
+    "Infrastructure": ["Docker", "AWS EC2", "Linux", "Nginx", "GitHub Actions"],
+    "ML / AI": ["LLMs", "RAG", "Azure Cognitive Services", "OpenCV", "YOLO"]
+  },
+
+  "about": "I'm a backend engineer from Kerala, currently at Kireap. I care about systems that are simple to reason about, fast to iterate on, and don't fall apart under load. I organized Make-A-Ton, South India's largest hackathon, which was equal parts chaos and fun. Outside work — coffee, bad puns, and occasionally shipping side projects I may or may not finish."
+}

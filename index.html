@@ -1,649 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aswin Pradeep - Backend Developer @Kireap | AI & ML | Portfolio</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta name="description"
-        content="Aswin Pradeep's portfolio showcasing backend development, machine learning, AI, and cloud technologies. Learn about my skills, projects, and experience as a developer.">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
-            background-color: #f4ecd8;
-            /* Sepia background */
-            color: #2f3640;
-            padding: 20px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aswin Pradeep C</title>
+  <meta name="description" content="Software Engineer. I build backends, break things, and occasionally fix them." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: none;
-        }
+    :root {
+      --ink: #111111;
+      --muted: #666666;
+      --faint: #e8e8e8;
+      --bg: #ffffff;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+      --max: 680px;
+      --gap: 1.75rem;
+    }
 
-        header h1 {
-            margin: 10px 0;
-            font-size: 3rem;
-            color: #4b4b4b;
-        }
+    html { font-size: 16px; }
 
-        header p {
-            font-size: 1.2rem;
-            color: #555;
-        }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      padding: 3rem 1.5rem 6rem;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        header img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            margin-top: 3px;
-        }
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
 
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    /* ── HEADER ── */
+    header {
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--faint);
+      margin-bottom: 3rem;
+    }
 
-        section {
-            margin-bottom: 40px;
-            padding: 20px;
-        }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
 
-        section h2 {
-            font-size: 1.8rem;
-            color: #4b4b4b;
-            margin-bottom: 20px;
-        }
+    header .tagline {
+      color: var(--muted);
+      font-size: 0.975rem;
+      margin-bottom: 1.25rem;
+      max-width: 480px;
+    }
 
-        .about p {
-            margin: 20px 0;
-            text-align: justify;
-        }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0;
+    }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
+    .links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.875rem;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 1px;
+      margin-right: 1.25rem;
+      transition: opacity 0.15s;
+    }
 
-        .card {
-            border-radius: 12px;
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-            border: 2px solid #000;
-        }
+    .links a:hover { opacity: 0.45; }
 
-        .card:hover {
-            transform: translateY(-10px);
-        }
+    /* ── SECTIONS ── */
+    section {
+      margin-bottom: 3rem;
+    }
 
-        .card h3 {
-            margin: 15px 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
+    section h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
 
-        .card p {
-            margin: 10px 0;
-        }
+    /* ── NOW ── */
+    #now p {
+      font-size: 0.975rem;
+      color: var(--ink);
+      max-width: 560px;
+    }
 
-        .card a {
-            display: inline-block;
-            margin-top: 10px;
-            color: #555;
-            font-weight: bold;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+    /* ── WORK ── */
+    .work-item {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--faint);
+    }
 
-        .card a:hover {
-            color: #2f6a1f;
-        }
+    .work-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
 
-        .card img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 0.2rem;
+    }
 
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-        }
+    .work-header .company {
+      font-weight: 600;
+      font-size: 0.975rem;
+    }
 
-        footer a {
-            margin: 0 10px;
-            color: #c39e6d;
-            text-decoration: none;
-        }
+    .work-header .period {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+    .work-role {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
 
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 2.4rem;
-            }
+    .work-bullets {
+      list-style: none;
+      padding: 0;
+    }
 
-            .card {
-                padding: 20px;
-            }
-        }
+    .work-bullets li {
+      font-size: 0.9rem;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.3rem;
+      color: #333;
+    }
 
-        .tech-stack {
-            margin-top: 10px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
+    .work-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
 
-        .tech-stack img {
-            width: 30px;
-            height: 30px;
-            transition: transform 0.3s ease;
-        }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
 
-        .tech-stack img:hover {
-            transform: scale(1.1);
-        }
+    .tag {
+      font-size: 0.72rem;
+      font-family: var(--mono);
+      color: var(--muted);
+      border: 1px solid var(--faint);
+      padding: 0.1rem 0.5rem;
+      border-radius: 2px;
+    }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    /* ── PROJECTS ── */
+    .project-item {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--faint);
+    }
 
-        li {
-            margin-bottom: 15px;
-        }
+    .project-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
 
-        /* Navbar styles */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            color: white;
-            background-color: #f4ecd8;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
+    .project-name-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.35rem;
+      flex-wrap: wrap;
+    }
 
-        .navbar .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #2f3640;
-        }
+    .project-name-row span {
+      font-weight: 600;
+      font-size: 0.975rem;
+    }
 
-        .navbar .menu {
-            display: flex;
-            gap: 15px;
-        }
+    .project-name-row a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--faint);
+      transition: color 0.15s, border-color 0.15s;
+    }
 
-        .navbar .menu a {
-            text-decoration: none;
-            color: #2f3640;
-            transition: color 0.3s;
-        }
+    .project-name-row a:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
 
-        .navbar .menu a:hover {
-            color: green;
-        }
+    .project-desc {
+      font-size: 0.9rem;
+      color: #333;
+      max-width: 520px;
+    }
 
-        .navbar .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
+    /* ── OPEN SOURCE ── */
+    .oss-item {
+      font-size: 0.9rem;
+    }
 
-        /* Drawer menu styles */
-        .drawer {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #f4ecd8;
-            color: black;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-            transition: left 0.3s;
-            z-index: 999;
-        }
+    .oss-item strong { font-weight: 600; }
 
-        .drawer.open {
-            left: 0;
-        }
+    .oss-item p { color: #333; margin-top: 0.2rem; }
 
-        .drawer .menu {
-            flex-direction: column;
-            margin: 80px 0 0;
-            padding: 0 20px;
-        }
+    .oss-item .oss-links {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 1rem;
+    }
 
-        .drawer .menu a {
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
+    .oss-item .oss-links a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--faint);
+      transition: color 0.15s, border-color 0.15s;
+    }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .navbar .menu {
-                display: none;
-            }
+    .oss-item .oss-links a:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
 
-            .navbar .hamburger {
-                display: block;
-                color: #2f3640;
-            }
-        }
+    /* ── WRITING / BLOGS ── */
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
 
-        .drawer {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #f4ecd8;
-            color: black;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-            transition: left 0.3s;
-            z-index: 999;
-        }
+    .blog-item a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.9rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
 
-        .drawer-footer {
-            padding: 20px;
-            border-top: 1px solid #ddd;
-            margin-bottom: 20px;
-        }
+    .blog-item a:hover { border-color: var(--ink); }
 
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    .blog-item .blog-date {
+      font-size: 0.78rem;
+      font-family: var(--mono);
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
 
-        .contact-info a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: #2f3640;
-            transition: color 0.3s;
-        }
+    .rick-zone {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
 
-        .contact-info a:hover {
-            color: green;
-        }
+    .rick-zone p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-style: italic;
+    }
 
-        .contact-icon {
-            font-size: 1.2rem;
-        }
-    </style>
-    <meta name="twitter:title" content="Aswin Pradeep - Backend Developer | AI & ML | Portfolio">
-    <meta name="twitter:description"
-        content="Discover Aswin Pradeep's developer portfolio showcasing projects in backend development, AI, and machine learning.">
-    <meta name="twitter:image" content="aswin.jpeg">
-    <meta name="twitter:card" content="summary_large_image">
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": "Aswin Pradeep",
-          "jobTitle": "Backend Developer",
-          "url": "https://aswin.radr.in",
-          "image": "https://raw.githubusercontent.com/aswinpradeepc/website/refs/heads/main/aswin.jpeg",
-          "sameAs": [
-            "https://www.linkedin.com/in/aswinpradeepc",
-            "https://github.com/aswinpradeepc"
-          ],
-          "alumniOf": {
-            "@type": "CollegeOrUniversity",
-            "name": "Cochin University of Science and Technology"
-          }
-        }
-        </script>
-    <meta property="og:title" content="Aswin Pradeep - Backend Developer | AI & ML | Portfolio">
-    <meta property="og:description"
-        content="Explore Aswin Pradeep's developer portfolio featuring projects in backend development, machine learning, and AI. Learn more about my work and skills.">
-    <meta property="og:image"
-        content="https://raw.githubusercontent.com/aswinpradeepc/website/refs/heads/main/aswin.jpeg">
-    <!-- Link to an image for preview on social media -->
-    <meta property="og:url" content="https://aswin.radr.in">
-    <meta property="og:type" content="website">
+    .rick-btn {
+      font-size: 0.8rem;
+      font-family: var(--mono);
+      background: none;
+      border: 1px solid var(--ink);
+      padding: 0.4rem 0.85rem;
+      cursor: pointer;
+      color: var(--ink);
+      transition: background 0.15s, color 0.15s;
+    }
 
+    .rick-btn:hover {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .rick-embed {
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .rick-embed iframe {
+      width: 100%;
+      max-width: 480px;
+      height: 270px;
+      border: 1px solid var(--faint);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .skill-row {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .skill-cat {
+      font-weight: 600;
+      min-width: 110px;
+      flex-shrink: 0;
+      font-size: 0.8rem;
+    }
+
+    .skill-vals {
+      color: #444;
+    }
+
+    /* ── ACHIEVEMENTS ── */
+    .achievement-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .achievement-list li {
+      font-size: 0.9rem;
+      padding-left: 1rem;
+      position: relative;
+      color: #333;
+    }
+
+    .achievement-list li::before {
+      content: '↗';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    /* ── ABOUT ── */
+    #about p {
+      font-size: 0.975rem;
+      color: var(--ink);
+      max-width: 540px;
+    }
+
+    /* ── CONTACT ── */
+    #contact p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    #contact a {
+      color: var(--ink);
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      transition: opacity 0.15s;
+    }
+
+    #contact a:hover { opacity: 0.45; }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--faint);
+      font-size: 0.78rem;
+      font-family: var(--mono);
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── LOADING ── */
+    .skeleton {
+      background: linear-gradient(90deg, var(--faint) 25%, #f0f0f0 50%, var(--faint) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.2s infinite;
+      border-radius: 2px;
+      height: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      body { padding: 2rem 1.25rem 5rem; }
+      .work-header { flex-direction: column; gap: 0; }
+      .skill-cat { min-width: 90px; }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">aswinpradeepc</div>
-        <div class="menu">
-            <a href="https://github.com/aswinpradeepc" target="_blank"> GitHub</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Technical Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#interests">Other Interests</a>
-        </div>
-        <div class="hamburger" id="hamburger">&#9776;</div>
+<div class="container" id="app">
+  <!-- Rendered by JS below -->
+</div>
+
+<script>
+(async () => {
+  const app = document.getElementById('app');
+
+  // ── Load data.json ──
+  let data;
+  try {
+    const res = await fetch('./data.json');
+    data = await res.json();
+  } catch (e) {
+    app.innerHTML = '<p style="color:#666;font-size:.9rem">Failed to load portfolio data.</p>';
+    return;
+  }
+
+  const { meta, now, work, projects, opensource, achievements, skills, about } = data;
+
+  // ── Helpers ──
+  const el = (tag, cls, html) => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html !== undefined) e.innerHTML = html;
+    return e;
+  };
+
+  const a = (href, text, attrs = '') =>
+    `<a href="${href}" target="_blank" rel="noopener" ${attrs}>${text}</a>`;
+
+  // ── HEADER ──
+  const header = document.createElement('header');
+  header.innerHTML = `
+    <h1>${meta.name}</h1>
+    <p class="tagline">${meta.tagline}</p>
+    <div class="links">
+      ${a(meta.links.github, 'GitHub')}
+      ${a(meta.links.linkedin, 'LinkedIn')}
+      ${a(meta.links.devbio, 'devb.io')}
+      <a href="mailto:${meta.email}">${meta.email}</a>
     </div>
+  `;
+  app.appendChild(header);
 
-    <!-- Drawer Menu -->
-    <div class="drawer" id="drawer">
-        <div class="menu">
-            <a href="#projects">Projects</a><br>
-            <a href="#skills">Technical Skills</a><br>
-            <a href="#experience">Experience</a><br>
-            <a href="#achievements">Achievements</a><br>
-            <a href="#interests">Other Interests</a><br>
-        </div>
-        <div class="drawer-footer">
-            <div class="contact-info">
-                <a href="mailto:aswinpradeepc@gmail.com">
-                    Email
-                </a>
-                <a href="https://linkedin.com/in/aswinpradeepc" target="_blank">
-                    LinkedIn
-                </a>
-                <a href="https://github.com/aswinpradeepc" target="_blank">GitHub </a>
-            </div>
-        </div>
+  // ── NOW ──
+  const nowSec = el('section', '', `<h2>Now</h2><p>${now}</p>`);
+  nowSec.id = 'now';
+  app.appendChild(nowSec);
+
+  // ── WORK ──
+  const workSec = el('section');
+  workSec.id = 'work';
+  workSec.appendChild(el('h2', '', 'Experience'));
+  work.forEach(w => {
+    const div = el('div', 'work-item');
+    div.innerHTML = `
+      <div class="work-header">
+        <span class="company">${w.company}</span>
+        <span class="period">${w.period}</span>
+      </div>
+      <div class="work-role">${w.role} · ${w.location}</div>
+      <ul class="work-bullets">
+        ${w.bullets.map(b => `<li>${b}</li>`).join('')}
+      </ul>
+      <div class="tags">${w.tech.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    `;
+    workSec.appendChild(div);
+  });
+  app.appendChild(workSec);
+
+  // ── PROJECTS ──
+  const projSec = el('section');
+  projSec.id = 'projects';
+  projSec.appendChild(el('h2', '', 'Projects'));
+  projects.forEach(p => {
+    const div = el('div', 'project-item');
+    const links = [
+      p.github ? a(p.github, 'GitHub') : '',
+      p.live   ? a(p.live, 'Live ↗') : ''
+    ].filter(Boolean).join('');
+    div.innerHTML = `
+      <div class="project-name-row">
+        <span>${p.name}</span>
+        ${links}
+      </div>
+      <p class="project-desc">${p.desc}</p>
+      <div class="tags">${p.tech.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    `;
+    projSec.appendChild(div);
+  });
+  app.appendChild(projSec);
+
+  // ── OPEN SOURCE ──
+  const ossSec = el('section');
+  ossSec.id = 'opensource';
+  ossSec.appendChild(el('h2', '', 'Open Source'));
+  opensource.forEach(o => {
+    const div = el('div', 'oss-item');
+    div.innerHTML = `
+      <strong>${o.project}</strong>
+      <p>${o.desc}</p>
+      <div class="oss-links">
+        ${a(o.url, 'Repository')}
+        ${a(o.profile, 'My profile')}
+      </div>
+    `;
+    ossSec.appendChild(div);
+  });
+  app.appendChild(ossSec);
+
+  // ── WRITING ── (fetch Medium RSS via rss2json)
+  const writingSec = el('section');
+  writingSec.id = 'writing';
+  writingSec.appendChild(el('h2', '', 'Writing'));
+
+  const blogList  = el('div', 'blog-list');
+  const rickZone  = el('div', 'rick-zone');
+  rickZone.style.display = 'none';
+
+  // Skeleton while loading
+  for (let i = 0; i < 3; i++) {
+    const sk = el('div');
+    sk.innerHTML = '<div class="skeleton" style="width:70%"></div><div class="skeleton" style="width:30%"></div>';
+    blogList.appendChild(sk);
+  }
+
+  writingSec.appendChild(blogList);
+
+  rickZone.innerHTML = `
+    <p>Nothing here yet. Probably thinking about it.</p>
+    <button class="rick-btn" id="rick-btn">view secret drafts.exe</button>
+    <div class="rick-embed" id="rick-embed">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+        title="definitely my blog" frameborder="0" allow="autoplay" allowfullscreen></iframe>
     </div>
+  `;
+  writingSec.appendChild(rickZone);
+  app.appendChild(writingSec);
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const drawer = document.getElementById('drawer');
+  // Async fetch blogs
+  (async () => {
+    try {
+      const feedUrl = encodeURIComponent(`https://medium.com/feed/@${meta.medium_username}`);
+      const rssRes  = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${feedUrl}`);
+      const rssData = await rssRes.json();
 
-        hamburger.addEventListener('click', () => {
-            drawer.classList.toggle('open');
+      blogList.innerHTML = '';
+
+      if (rssData.status === 'ok' && rssData.items && rssData.items.length > 0) {
+        rssData.items.slice(0, 5).forEach(post => {
+          const date = new Date(post.pubDate).toLocaleDateString('en-GB', {
+            year: 'numeric', month: 'short', day: 'numeric'
+          });
+          const item = el('div', 'blog-item');
+          item.innerHTML = `
+            <a href="${post.link}" target="_blank" rel="noopener">${post.title}</a>
+            <div class="blog-date">${date}</div>
+          `;
+          blogList.appendChild(item);
         });
+      } else {
+        rickZone.style.display = 'flex';
+      }
+    } catch {
+      blogList.innerHTML = '';
+      rickZone.style.display = 'flex';
+    }
 
-        // Close the drawer when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!drawer.contains(event.target) && !hamburger.contains(event.target)) {
-                drawer.classList.remove('open');
-            }
-        });
-    </script>
-    <header>
-        <img src="aswin.jpeg" alt="Aswin Pradeep's Photo">
-        <h1>Aswin Pradeep</h1>
-        <p>Backend Developer | Student | AI&ML | Linux Enthusiast </p>
-    </header>
-    <main>
-        <section class="about">
-            <p>I am a passionate backend developer with a keen interest in AI and machine learning. With a solid
-                foundation in computer science and cloud technologies, I strive to deliver high-quality solutions that
-                address real-world challenges. Checkout my <u><a href="aswinpradeepc.pdf">resume</a></u>. Let's collaborate and create
-                something extraordinary! </p>
-        </section>
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="cards">
-                <div class="card">
-                    <h3><a href="https://github.com/aswinpradeepc/edurider_backend" target="_blank">Edurider
-                            (Ongoing)</a>
-                    </h3>
-                    <p> A school bus fleet management system along with school bus and parent connect system with live
-                        location sharing and other features.</p>
-                    <p>Check out the api endpoints at :<a href="https://edurider.radr.in/api/student">
-                            edurider.radr.in</a></p>
-                    <p><strong>Tech Stack:</strong> Django, JavaScript, SQLite</p>
-                    <div class="tech-stack">
-                        <img src="https://cdn.simpleicons.org/django/darkgreen" alt="Django Logo" title="Django">
-                        <img src="https://cdn.simpleicons.org/JavaScript/black" alt="JavaScript" title="JavaScript">
-                        <img src="https://cdn.simpleicons.org/postgresql/black" alt=" PostgreSQL" title="PostgreSQL">
-                        <img src="https://cdn.simpleicons.org/docker" alt=" Docker" title="Docker">
-                        <img src="https://cdn.simpleicons.org/amazonwebservices" alt=" AWS" title="AWS">
-                        <img src="https://cdn.simpleicons.org/nginx" alt=" Nginx" title="Nginx">
-                    </div>
-                    <p><a href="https://github.com/aswinpradeepc/edurider_backend" target="_blank">GitHub</a></p>
-                </div>
-                <div class="card">
-                    <h3><a href="https://github.com/aswinpradeepc/SOE-Project-Hub" target="_blank">SOE Project Hub</a>
-                    </h3>
-                    <p>An academic project management platform with role-based access, plagiarism detection, and
-                        document handling.</p>
-                    <p><strong>Tech Stack:</strong> Django, JavaScript, SQLite</p>
-                    <div class="tech-stack">
-                        <img src="https://cdn.simpleicons.org/django/darkgreen" alt="Django Logo" title="Django">
-                        <img src="https://cdn.simpleicons.org/JavaScript/black" alt="JavaScript" title="JavaScript">
-                        <img src="https://cdn.simpleicons.org/sqlite" alt=" sqlite" title="sqlite">
-                        <img src="https://cdn.simpleicons.org/docker" alt=" sqlite" title="sqlite">
-                    </div>
-                    <p><a href="https://github.com/aswinpradeepc/SOE-Project-Hub" target="_blank">GitHub</a></p>
-                </div>
-                <div class="card">
-                    <h3><a href="https://github.com/aswinpradeepc/bibliobazaar" target="_blank">Bibliobazaar</a></h3>
-                    <p>An e-commerce platform for books featuring secure payments, catalog management, and a
-                        user-friendly interface.</p>
-                    <p><strong>Tech Stack:</strong> Django, JavaScript, SQLite, Razorpay</p>
-                    <div class="tech-stack">
-                        <img src="https://cdn.simpleicons.org/django/darkgreen" alt="Django Logo" title="Django">
-                        <img src="https://cdn.simpleicons.org/JavaScript/black" alt="JavaScript" title="JavaScript">
-                        <img src="https://cdn.simpleicons.org/sqlite" alt=" sqlite" title="sqlite">
-                        <img src="https://cdn.simpleicons.org/Razorpay" alt=" Razorpay" title="Razorpay">
-                    </div>
-                    <p><a href="https://github.com/aswinpradeepc/bibliobazaar" target="_blank">GitHub</a></p>
-                </div>
-                <!-- <div class="card"> -->
-                    <!-- <h3><a href="https://github.com/aswinpradeepc/tasks-cli" target="_blank">Tasks CLI</a></h3>
-                    <p>A simple command-line todo list app that helps manage tasks across multiple states (todo,
-                        in-progress,
-                        done), with features like adding, updating, deleting, and moving tasks between lists.</p>
-                    <p><strong>Tech Stack:</strong> Python, JSON</p>
-                    <div class="tech-stack">
-                        <img src="https://cdn.simpleicons.org/Python" alt="Python Logo" title="Python">
-                        <img src="https://cdn.simpleicons.org/json" alt="Json Logo" title="Json">
-                    </div>
-                    <p><a href="https://github.com/aswinpradeepc/tasks-cli" target="_blank">GitHub</a></p> -->
-                <!-- </div> -->
-                <div class="card">
-                    <h3><a href="https://github.com/aswinpradeepc/take-rest" target="_blank">Take Rest</a></h3>
-                    <p>A Python-based eye monitoring system that tracks blinks and reminds users to take breaks, helping
-                        prevent Computer Vision Syndrome (CVS) due to prolonged screen time.</p>
-                    <p><strong>Tech Stack:</strong> Python, OpenCV</p>
-                    <div class="tech-stack">
-                        <img src="https://cdn.simpleicons.org/Python" alt="Python Logo" title="Python">
-                        <img src="https://cdn.simpleicons.org/OpenCV" alt="OpenCV" title="OpenCV">
-                    </div>
-                    <p><a href="https://github.com/aswinpradeepc/take-rest" target="_blank">GitHub</a></p>
-                </div>
-                <div class="card">
-                    <h3><a href="https://github.com/aswinpradeepc/edurider" target="_blank">Edurider Frontend
-                            (Ongoing)</a></h3>
-                    <p>A flutter app with Mapbox integrations for map services, The project aims to provide real time
-                        notifications through OneSignal, alerts for parents five mins before school bus reaches their
-                        home
-                        etc.
-                    </p>
-                    <p><strong>Tech Stack:</strong> Flutter, Mapbox</p>
-                    <div class="tech-stack">
-                        <img src="https://cdn.simpleicons.org/flutter" alt="Flutter" title="Flutter">
-                        <img src="https://cdn.simpleicons.org/Mapbox" alt="mapbox" title="Mapbox">
-                    </div>
-                    <p><a href="https://github.com/aswinpradeepc/take-rest" target="_blank">GitHub</a></p>
-                </div>
-                <div class="card">
-                    <h3><a href="https://github.com/aswinpradeepc/Strabismus-Detector" target="_blank">Strabismus
-                            Detector</a></h3>
-                    <p>An end-to-end machine learning project to help detect strabismus (squint-eye) and classify the
-                        type of condition. It uses a TensorFlow-based image classification model, with a backend built
-                        on FastAPI and a frontend in React.</p>
-                    <p><strong>Tech Stack:</strong> TensorFlow, FastAPI, React</p>
-                    <div class="tech-stack">
-                        <img src="https://cdn.simpleicons.org/Tensorflow" alt="TensorFlow" title="TensorFlow">
-                        <img src="https://cdn.simpleicons.org/FastAPI" alt="FastAPI Logo" title="FastAPI">
-                        <img src="https://cdn.simpleicons.org/React" alt="React Logo" title="React">
+    // Rick roll button
+    document.getElementById('rick-btn')?.addEventListener('click', () => {
+      const embed = document.getElementById('rick-embed');
+      embed.style.display = embed.style.display === 'none' ? 'block' : 'none';
+    });
+  })();
 
-                    </div>
-                    <p><a href="https://github.com/aswinpradeepc/Strabismus-Detector" target="_blank">GitHub</a></p>
-                </div>
-                <!-- <div class="card"> -->
-                    <!-- <h3><a href="https://github.com/aswinpradeepc/Fidget-a-Ton" target="_blank">Fidget a Ton</a></h3>
-                    <p>Design files for custom swag made for Make-A-Ton 6.0. This project features the creation of small
-                        clicky keyboards using 3D printing and laser cutting to provide a satisfying "clicky" experience
-                        for participants.</p>
-                    <p><strong>Tech Stack:</strong> 3D Designing and Printing , Laser Cutting</p>
-                    <div class="tech-stack">
-                        <img src="https://cdn.simpleicons.org/Freecad" alt="Freecad" title="Freecad">
-                    </div>
-                    <p><a href="https://github.com/aswinpradeepc/Fidget-a-Ton" target="_blank">GitHub</a></p> -->
-                <!-- </div> -->
-            </div>
-        </section>
-        <section id="skills">
-            <h2>Technical Skills</h2>
+  // ── SKILLS ──
+  const skillSec = el('section');
+  skillSec.id = 'skills';
+  skillSec.appendChild(el('h2', '', 'Skills'));
+  const grid = el('div', 'skills-grid');
+  Object.entries(skills).forEach(([cat, vals]) => {
+    const row = el('div', 'skill-row');
+    row.innerHTML = `<span class="skill-cat">${cat}</span><span class="skill-vals">${vals.join(', ')}</span>`;
+    grid.appendChild(row);
+  });
+  skillSec.appendChild(grid);
+  app.appendChild(skillSec);
 
-            <h3>Programming Languages</h3>
-            <p align="left">
-                <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=darkgreen"
-                    alt="Python" />
-                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
-                    alt="JavaScript" />
-                <img src="https://img.shields.io/badge/SQL-0064A5?style=for-the-badge&logo=MySQL&logoColor=white"
-                    alt="SQL" />
-            </p>
+  // ── ACHIEVEMENTS ──
+  const achSec = el('section');
+  achSec.id = 'achievements';
+  achSec.appendChild(el('h2', '', 'A Few Things'));
+  const achList = el('ul', 'achievement-list');
+  achievements.forEach(ach => {
+    achList.appendChild(el('li', '', ach));
+  });
+  achSec.appendChild(achList);
+  app.appendChild(achSec);
 
-            <h3>Backend Frameworks</h3>
-            <p align="left">
-                <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"
-                    alt="Django" />
-                <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"
-                    alt="Node.js" />
-                <img src="https://img.shields.io/badge/Express.js-402DAA?style=for-the-badge" alt="Express.js" />
-                <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white"
-                    alt="FastAPI" />
-            </p>
+  // ── ABOUT ──
+  const aboutSec = el('section', '', `<h2>About</h2><p>${about}</p>`);
+  aboutSec.id = 'about';
+  app.appendChild(aboutSec);
 
-            <h3>Databases</h3>
-            <p align="left">
-                <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"
-                    alt="MongoDB" />
-                <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white"
-                    alt="Redis" />
-                <img src="https://img.shields.io/badge/MySQL-0061F2?style=for-the-badge&logo=mysql&logoColor=white"
-                    alt="MySQL" />
-                <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white"
-                    alt="SQLite" />
-                <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"
-                    alt="PostgreSQL" />
-            </p>
+  // ── CONTACT ──
+  const contactSec = el('section');
+  contactSec.id = 'contact';
+  contactSec.innerHTML = `
+    <h2>Contact</h2>
+    <p>Questions, opportunities, or just want to say hi.</p>
+    <a href="mailto:${meta.email}">${meta.email}</a>
+  `;
+  app.appendChild(contactSec);
 
-            <h3>Tools</h3>
-            <p align="left">
-                <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"
-                    alt="Git" />
-                <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"
-                    alt="GitHub" />
-                <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"
-                    alt="Postman" />
-                <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"
-                    alt="Docker" />
-            </p>
-
-            <h3>Operating Systems</h3>
-            <p>
-                <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"
-                    alt="Linux" />
-            </p>
-        </section>
-        <section id="experience">
-            <h2>Experience</h2>
-            <ul>
-                <li>
-                    <div style="display: flex; justify-content: space-between;">
-                        <strong>Lascade LLC</strong>
-                        <span>Jul 2024 – Aug 2024</span>
-                    </div>
-                    <p><strong>Backend Developer Intern</strong> — Node.js, Express.js, MongoDB, Redis</p>
-                    <ul>
-                        <li>Designed and implemented RESTful APIs for the travel module, incorporating input validation
-                            and error handling for improved reliability.</li>
-                        <li>Optimized API performance by implementing Redis caching, achieving significant reduction in
-                            response times for high-traffic endpoints.</li>
-                        <li>Created clear and concise API documentation and coordinated with frontend teams to
-                            streamline development and maintain alignment on response structures.</li>
-                    </ul>
-                </li>
-                <li>
-                    <div style="display: flex; justify-content: space-between;">
-                        <strong>Agua India</strong>
-                        <span>June 2024</span>
-                    </div>
-                    <p><strong>Machine Learning Engineer Intern</strong> — OpenCV, YOLO, Mapbox</p>
-                    <ul>
-                        <li>Proposed and developed proof-of-concept implementations for AI-powered workflow
-                            optimizations, demonstrating potential efficiency improvements.</li>
-                        <li>Built a prototype using OpenCV for automated coupon code extraction, implementing ROI
-                            detection to filter out irrelevant text and streamline water delivery operations.</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-        <section id="achievements">
-            <h2>Achievements</h2>
-            <div class="cards">
-                <div>
-                    <h3>Led the Organization of Make-A-Ton</h3>
-                    <p>South India’s largest hackathon with over 200 participants, a 30-member team, and sponsorships
-                        from GitHub, Logitech, MLH, Orkes, and GeeksForGeeks.</p>
-                </div>
-                <div>
-                    <h3>First Prize at Summer Startup Festival 2023</h3>
-                    <p>Won the first prize in the Project Expo competition at GEC Thrissur.</p>
-                </div>
-            </div>
-        </section>
-        <section id="interests">
-            <h2>Other Interests</h2>
-            <div class="cards">
-                <div>
-                    <h3>Chief Executive Officer at IEDC CUSAT</h3>
-                    <p>February 2024 - Present | Kochi, Kerala, India</p>
-                </div>
-                <div>
-                    <h3>Back End Developer at Lamsta</h3>
-                    <p>February 2023 - Present | Kochi, Kerala, India</p>
-                </div>
-                <div>
-                    <h3>Campus Lead at TinkerHub</h3>
-                    <p>May 2023 - June 2024 | Kochi, Kerala, India</p>
-                    <p>Leading TinkerHub SOE chapter, organizing events for innovation and professional growth.</p>
-                </div>
-                <div>
-                    <h3>Intern at Fablab CUSAT</h3>
-                    <p>June 2022 | Kochi, Kerala, India</p>
-                    <p>Trained in using machines like vinyl cutters, laser cutters, and 3D printers.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>
-            <a href="mailto:aswinpradeepc@gmail.com">Email</a> |
-            <a href="https://www.linkedin.com/in/aswinpradeepc" target="_blank">LinkedIn</a> |
-            <a href="https://github.com/aswinpradeepc" target="_blank">GitHub</a>
-        </p>
-    </footer>
+  // ── FOOTER ──
+  const footer = el('footer', '', `
+    <span>aswinpradeepc.com</span>
+    <span>Updated ${new Date().getFullYear()}</span>
+  `);
+  app.appendChild(footer);
+})();
+</script>
 </body>
-
 </html>
