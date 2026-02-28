@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events — Aswin Pradeep C</title>
+  <meta name="description" content="Events, hackathons, and highlights from Aswin Pradeep C." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="nav"></nav>
+
+<main>
+  <div id="events-content"></div>
+</main>
+
+<footer id="footer"></footer>
+
+<script src="nav.js"></script>
+<script src="footer.js"></script>
+<script>
+(async () => {
+  let data;
+  try {
+    const res = await fetch('./data.json');
+    data = await res.json();
+  } catch {
+    document.getElementById('events-content').innerHTML =
+      '<p style="color:var(--muted);font-size:.9rem">Failed to load content.</p>';
+    return;
+  }
+
+  const { events } = data;
+  const container = document.getElementById('events-content');
+
+  const eventItems = events.map(e => {
+    const tags = e.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+    let imageHtml = '';
+    if (e.image) {
+      imageHtml = `
+        <div class="event-image">
+          <img src="${e.image}" alt="${e.title}" loading="lazy" />
+        </div>
+      `;
+    } else {
+      // Placeholder for future images
+      imageHtml = `
+        <div class="event-image-placeholder">
+          [ photo coming soon ]
+        </div>
+      `;
+    }
+
+    return `
+      <div class="event-item fade-up">
+        <div class="event-header">
+          <span class="event-title">${e.title}</span>
+          <span class="event-date">${e.date}</span>
+        </div>
+        <div class="event-subtitle">${e.subtitle}</div>
+        <p class="event-desc">${e.description}</p>
+        <div class="tags">${tags}</div>
+        ${imageHtml}
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="fade-up">
+      <span class="page-label">Aswin Pradeep C</span>
+      <h1 class="page-title">Events</h1>
+    </div>
+
+    <section>
+      <span class="section-label">Highlights</span>
+      ${eventItems}
+    </section>
+  `;
+})();
+</script>
+</body>
+</html>

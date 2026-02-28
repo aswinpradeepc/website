@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Aswin Pradeep C</title>
+  <meta name="description" content="Projects and open source contributions by Aswin Pradeep C." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="nav"></nav>
+
+<main>
+  <div id="projects-content"></div>
+</main>
+
+<footer id="footer"></footer>
+
+<script src="nav.js"></script>
+<script src="footer.js"></script>
+<script>
+(async () => {
+  let data;
+  try {
+    const res = await fetch('./data.json');
+    data = await res.json();
+  } catch {
+    document.getElementById('projects-content').innerHTML =
+      '<p style="color:var(--muted);font-size:.9rem">Failed to load content.</p>';
+    return;
+  }
+
+  const { projects, opensource, meta } = data;
+  const container = document.getElementById('projects-content');
+
+  const projectItems = projects.map(p => {
+    const links = [
+      p.github ? `<a class="subtle" href="${p.github}" target="_blank" rel="noopener">GitHub ↗</a>` : '',
+      p.live   ? `<a class="subtle" href="${p.live}"   target="_blank" rel="noopener">Live ↗</a>`   : '',
+    ].filter(Boolean).join('');
+    const tags = p.tech.map(t => `<span class="tag">${t}</span>`).join('');
+    return `
+      <div class="project-item fade-up">
+        <div class="project-name-row">
+          <span class="project-name">${p.name}</span>
+          ${links}
+        </div>
+        <p class="project-desc">${p.desc}</p>
+        <div class="tags">${tags}</div>
+      </div>
+    `;
+  }).join('');
+
+  const ossItems = opensource.map(o => `
+    <div class="oss-item fade-up">
+      <div class="oss-name">${o.project}</div>
+      <p class="oss-desc">${o.desc}</p>
+      <div class="oss-links">
+        <a class="subtle" href="${o.url}"     target="_blank" rel="noopener">Repository ↗</a>
+        <a class="subtle" href="${o.profile}" target="_blank" rel="noopener">My profile ↗</a>
+      </div>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="fade-up">
+      <span class="page-label">Aswin Pradeep C</span>
+      <h1 class="page-title">Projects</h1>
+    </div>
+
+    <section>
+      <span class="section-label">Selected work</span>
+      ${projectItems}
+      <p style="margin-top:1.5rem;font-size:.8rem;color:var(--muted);">
+        More on <a class="subtle" href="${meta.links.github}" target="_blank" rel="noopener">GitHub ↗</a>
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <span class="section-label">Open Source</span>
+      ${ossItems}
+    </section>
+  `;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Aswin Pradeep C</title>
+  <meta name="description" content="Get in touch with Aswin Pradeep C." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="nav"></nav>
+
+<main>
+  <div id="contact-content"></div>
+</main>
+
+<!-- No footer on contact — social links are already the point of this page -->
+
+<script src="nav.js"></script>
+<script>
+(async () => {
+  let data;
+  try {
+    const res = await fetch('./data.json');
+    data = await res.json();
+  } catch {
+    document.getElementById('contact-content').innerHTML =
+      '<p style="color:var(--muted);font-size:.9rem">Failed to load content.</p>';
+    return;
+  }
+
+  const { meta } = data;
+  const container = document.getElementById('contact-content');
+
+  container.innerHTML = `
+    <div class="fade-up">
+      <span class="page-label">Aswin Pradeep C</span>
+      <h1 class="page-title">Contact</h1>
+    </div>
+
+    <section class="fade-up">
+      <div class="contact-block">
+        <p>Questions, opportunities, collaborations, or just want to say hi — email is the best way to reach me.</p>
+        <a class="contact-email" href="mailto:${meta.email}">${meta.email}</a>
+      </div>
+
+      <div class="contact-socials">
+        <div class="contact-social-row">
+          <span class="platform">github</span>
+          <a href="${meta.links.github}" target="_blank" rel="noopener">github.com/aswinpradeepc</a>
+        </div>
+        <div class="contact-social-row">
+          <span class="platform">linkedin</span>
+          <a href="${meta.links.linkedin}" target="_blank" rel="noopener">linkedin.com/in/aswinpradeepc</a>
+        </div>
+        <div class="contact-social-row">
+          <span class="platform">devb.io</span>
+          <a href="${meta.links.devbio}" target="_blank" rel="noopener">devb.io/aswinpradeepc</a>
+        </div>
+        <div class="contact-social-row">
+          <span class="platform">location</span>
+          <span style="font-size:.875rem;color:var(--muted)">${meta.location}</span>
+        </div>
+      </div>
+    </section>
+  `;
+})();
+</script>
+</body>
+</html>

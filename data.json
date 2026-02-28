@@ -12,7 +12,9 @@
     "medium_username": "aswinpradeepc"
   },
 
-  "now": "Currently building software at Kireap. Contributing to devb.io — an open-source developer bio platform. Previously interned at Geojit Financial Services, where I worked on an LLM-based search system using RAG for financial data retrieval. Finishing up my B.Tech in CS at CUSAT, class of 2025.",
+  "now": "Currently building software at Kireap. Contributing to devb.io — an open-source developer bio platform. Previously interned at Geojit Financial Services, where I worked on an LLM-based search system using RAG for financial data retrieval. Finished my B.Tech in CS at CUSAT, class of 2025.",
+
+  "about": "I'm a backend engineer from Kerala. I care about systems that are simple to reason about, fast to iterate on, and don't fall apart under load. I organized Make-A-Ton, South India's largest hackathon — equal parts chaos and genuinely fun. Outside work: coffee, bad puns, and side projects I may or may not finish.",
 
   "work": [
     {
@@ -61,6 +63,13 @@
     }
   ],
 
+  "education": {
+    "institution": "Cochin University of Science and Technology",
+    "degree": "B.Tech in Computer Science and Engineering",
+    "period": "2021 – 2025",
+    "cgpa": "8.08"
+  },
+
   "projects": [
     {
       "name": "LinkRadr",
@@ -78,7 +87,7 @@
     },
     {
       "name": "SOE Project Hub",
-      "desc": "Academic project management system with role-based access, plagiarism checking, team management, and document uploads.",
+      "desc": "Academic project management system with role-based access, plagiarism checking, team management, document uploads, and support ticket system.",
       "tech": ["Django", "JavaScript", "SQLite"],
       "github": "https://github.com/aswinpradeepc/soe-project-hub",
       "live": null
@@ -88,15 +97,10 @@
   "opensource": [
     {
       "project": "devb.io",
-      "desc": "Open-source developer bio platform. Contributor — check the GitHub for specifics.",
+      "desc": "Open-source developer bio platform. Contributor — building tools that help developers present themselves better.",
       "url": "https://github.com/bestbug456/devbio",
       "profile": "https://devb.io/aswinpradeepc"
     }
-  ],
-
-  "achievements": [
-    "Led organization of Make-A-Ton — South India's largest hackathon, 200+ participants, 30-member team. Secured sponsorships from GitHub, Logitech, MLH, Orkes, and GeeksForGeeks.",
-    "First Prize, Project Expo — Summer Startup Festival 2023, GEC Thrissur."
   ],
 
   "skills": {
@@ -107,5 +111,22 @@
     "ML / AI": ["LLMs", "RAG", "Azure Cognitive Services", "OpenCV", "YOLO"]
   },
 
-  "about": "I'm a backend engineer from Kerala, currently at Kireap. I care about systems that are simple to reason about, fast to iterate on, and don't fall apart under load. I organized Make-A-Ton, South India's largest hackathon, which was equal parts chaos and fun. Outside work — coffee, bad puns, and occasionally shipping side projects I may or may not finish."
+  "events": [
+    {
+      "title": "Make-A-Ton",
+      "subtitle": "Lead Organizer",
+      "date": "2023",
+      "description": "Led the full organization of Make-A-Ton — South India's largest hackathon — with 200+ participants and a 30-member organizing team. Secured sponsorships from GitHub, Logitech, MLH, Orkes, and GeeksForGeeks.",
+      "tags": ["Hackathon", "Leadership", "Community"],
+      "image": null
+    },
+    {
+      "title": "Summer Startup Festival 2023",
+      "subtitle": "First Prize — Project Expo",
+      "date": "2023",
+      "description": "Won First Prize in the Project Expo competition at GEC Thrissur's Summer Startup Festival.",
+      "tags": ["Award", "Competition"],
+      "image": null
+    }
+  ]
 }

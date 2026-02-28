@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing — Aswin Pradeep C</title>
+  <meta name="description" content="Writing and blog posts by Aswin Pradeep C." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="nav"></nav>
+
+<main>
+  <div class="fade-up">
+    <span class="page-label">Aswin Pradeep C</span>
+    <h1 class="page-title">Writing</h1>
+  </div>
+
+  <section>
+    <span class="section-label">Latest posts</span>
+    <div id="blog-list">
+      <!-- Skeleton -->
+      <div style="display:flex;flex-direction:column;gap:.75rem;">
+        <div class="skeleton" style="width:75%"></div>
+        <div class="skeleton" style="width:30%"></div>
+        <div style="height:.5rem"></div>
+        <div class="skeleton" style="width:65%"></div>
+        <div class="skeleton" style="width:28%"></div>
+        <div style="height:.5rem"></div>
+        <div class="skeleton" style="width:70%"></div>
+        <div class="skeleton" style="width:25%"></div>
+      </div>
+    </div>
+
+    <!-- Rick roll — hidden until no posts found -->
+    <div class="rick-zone" id="rick-zone" style="display:none;">
+      <p>Nothing published yet. Probably drafting something profound.</p>
+      <button class="rick-btn" id="rick-btn">view secret drafts.exe</button>
+      <div class="rick-embed" id="rick-embed">
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+          title="definitely my drafts"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer"></footer>
+
+<script src="nav.js"></script>
+<script src="footer.js"></script>
+<script>
+(async () => {
+  const blogList = document.getElementById('blog-list');
+  const rickZone = document.getElementById('rick-zone');
+
+  // Get medium username from data.json
+  let username = 'aswinpradeepc';
+  try {
+    const d = await fetch('./data.json').then(r => r.json());
+    username = d.meta.medium_username || username;
+  } catch {}
+
+  try {
+    const feedUrl = encodeURIComponent(`https://medium.com/feed/@${username}`);
+    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${feedUrl}`);
+    const json = await res.json();
+
+    blogList.innerHTML = '';
+
+    if (json.status === 'ok' && json.items && json.items.length > 0) {
+      json.items.slice(0, 6).forEach(post => {
+        const date = new Date(post.pubDate).toLocaleDateString('en-GB', {
+          year: 'numeric', month: 'short', day: 'numeric'
+        });
+        const item = document.createElement('div');
+        item.className = 'blog-item fade-up';
+        item.innerHTML = `
+          <a class="blog-title" href="${post.link}" target="_blank" rel="noopener">${post.title}</a>
+          <div class="blog-date">${date}</div>
+        `;
+        blogList.appendChild(item);
+      });
+    } else {
+      rickZone.style.display = 'block';
+    }
+  } catch {
+    blogList.innerHTML = '';
+    rickZone.style.display = 'block';
+  }
+
+  // Rick roll toggle
+  document.getElementById('rick-btn')?.addEventListener('click', function () {
+    const embed = document.getElementById('rick-embed');
+    const isHidden = embed.style.display === 'none' || embed.style.display === '';
+    embed.style.display = isHidden ? 'block' : 'none';
+    this.textContent = isHidden ? 'ok ok i get it' : 'view secret drafts.exe';
+  });
+})();
+</script>
+</body>
+</html>
