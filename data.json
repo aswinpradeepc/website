@@ -44,7 +44,7 @@
       "company": "Lascade LLC",
       "role": "Backend Developer Intern",
       "period": "Jul 2024 – Aug 2024",
-      "location": "Remote",
+      "location": "Kochi, Kerala",
       "bullets": [
         "Built RESTful APIs for the travel module with input validation and error handling.",
         "Reduced response times significantly on high-traffic endpoints using Redis caching."
@@ -99,8 +99,9 @@
     {
       "project": "devb.io",
       "desc": "Open-source developer bio platform. Contributor — building tools that help developers present themselves better.",
-      "url": "https://github.com/bestbug456/devbio",
-      "profile": "https://devb.io/aswinpradeepc"
+      "url": "https://github.com/sunithvs/devb.io",
+      "profile": "https://devb.io/aswinpradeepc",
+      "image": "images/projects/devbio.png"
     }
   ],
 
@@ -115,11 +116,21 @@
   "activities": {
     "community": [
       {
+        "title": "IndiaFOSS 2025",
+        "subtitle": "Representing devb.io",
+        "date": "2025",
+        "description": "Attended IndiaFOSS 2025 representing devb.io, where we put up a stall to showcase the open-source developer bio platform and engaged with the FOSS community.",
+        "tags": ["Open Source", "FOSS", "Community"],
+        "link": "https://www.linkedin.com/posts/aswinpradeepc_indiafoss2025-opensource-foss-ugcPost-7385247235103662080-hNKZ/",
+        "image": "images/activities/india-foss-2025.jpeg"
+      },
+      {
         "title": "Make-A-Ton 7.0",
         "subtitle": "Lead Organizer",
         "date": "2024",
         "description": "Led the full organization of Make-A-Ton 7.0 — South India's largest hackathon — with 200+ participants and a 30-member organizing team. Secured sponsorships from GitHub, Logitech, MLH, Orkes, and GeeksForGeeks.",
         "tags": ["Hackathon", "Leadership", "Community"],
+        "link": "https://2024.makeaton.in/",
         "image": null
       },
       {
@@ -163,7 +174,7 @@
         "date": "2023",
         "description": "Won First Prize in the Project Expo competition at GEC Thrissur's Summer Startup Festival.",
         "tags": ["Award", "Competition"],
-        "image": null
+        "image": "images/activities/SSF-Thrissur.jpeg"
       }
     ]
   }
