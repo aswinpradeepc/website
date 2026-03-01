@@ -48,6 +48,15 @@
         `;
       }
 
+      let linkHtml = '';
+      if (e.link) {
+        linkHtml = `
+          <div style="margin-top: 0.5rem;">
+            <a class="subtle" href="${e.link}" target="_blank" rel="noopener">View details ↗</a>
+          </div>
+        `;
+      }
+
       return `
         <div class="event-item fade-up">
           <div class="event-header">
@@ -58,6 +67,7 @@
           <p class="event-desc">${e.description}</p>
           <div class="tags">${tags}</div>
           ${imageHtml}
+          ${linkHtml}
         </div>
       `;
     }).join('');

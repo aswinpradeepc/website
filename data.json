@@ -15,7 +15,7 @@
 
   "now": "Currently building software at Kireap. Contributing to devb.io — an open-source developer bio platform. Previously interned at Geojit Financial Services, where I worked on an LLM-based search system using RAG for financial data retrieval. Finished my B.Tech in CS at CUSAT, class of 2025.",
 
-  "about": "I'm a backend engineer from Kerala. I care about systems that are simple to reason about, fast to iterate on, and don't fall apart under load. I organized Make-A-Ton, South India's largest hackathon — equal parts chaos and genuinely fun. Outside work: chai, bad puns, and side projects I may or may not finish.",
+  "about": "I'm a backend engineer from Kerala. I care about systems that are simple to reason about, fast to iterate on, and don't fall apart under load. I organized Make-A-Ton 7.0, South India's largest hackathon — equal parts chaos and genuinely fun. Outside work: chai, bad puns, and side projects I may or may not finish.",
 
   "experience": [
     {
@@ -114,13 +114,20 @@
 
   "activities": {
     "community": [
-
       {
         "title": "Make-A-Ton 7.0",
         "subtitle": "Lead Organizer",
         "date": "2024",
         "description": "Led the full organization of Make-A-Ton 7.0 — South India's largest hackathon — with 200+ participants and a 30-member organizing team. Secured sponsorships from GitHub, Logitech, MLH, Orkes, and GeeksForGeeks.",
         "tags": ["Hackathon", "Leadership", "Community"],
+        "image": null
+      },
+      {
+        "title": "IEDC CUSAT",
+        "subtitle": "Student Lead",
+        "date": "2024",
+        "description": "Led a team to organize events that encourage student entrepreneurship activities with events like Innovate and Elevate, Redbull Basement Local edition at CUSAT, Network Nest, and more.",
+        "tags": ["Entrepreneurship", "Leadership", "Community"],
         "image": null
       },
       {
@@ -141,6 +148,15 @@
       }
     ],
     "achievements": [
+      {
+        "title": "FOSS Hack 2025",
+        "subtitle": "TOP 10 — devb.io",
+        "date": "2025",
+        "description": "Devb.io project ranked among top 10 projects at FOSS Hack 2025.",
+        "tags": ["Open Source", "Award", "Competition"],
+        "link": "https://forum.fossunited.org/t/foss-hack-2025-results/5541",
+        "image": null
+      },
       {
         "title": "Summer Startup Festival 2023",
         "subtitle": "First Prize — Project Expo",
