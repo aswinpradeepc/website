@@ -1,16 +1,29 @@
 // nav.js — inject shared navigation
 (function () {
   const pages = [
-    { href: 'index.html',    label: 'Home'     },
-    { href: 'experience.html',     label: 'Experience'     },
-    { href: 'projects.html', label: 'Projects' },
-    { href: 'activities.html',   label: 'Activities'   },
-    { href: 'writing.html',  label: 'Writing'  },
-    { href: 'contact.html',  label: 'Contact'  },
+    { href: '/',    label: 'Home'     },
+    { href: '/experience',     label: 'Experience'     },
+    { href: '/projects', label: 'Projects' },
+    { href: '/activities',   label: 'Activities'   },
+    { href: '/writing',  label: 'Writing'  },
+    { href: '/contact',  label: 'Contact'  },
   ];
 
-  // Detect active page
-  const current = window.location.pathname.split('/').pop() || 'index.html';
+  // Detect active page - normalize to remove .html extension
+  let currentPath = window.location.pathname;
+  // Remove .html extension if present
+  if (currentPath.endsWith('.html')) {
+    currentPath = currentPath.slice(0, -5);
+  }
+  // Ensure root path is '/'
+  if (currentPath === '' || currentPath === '/index') {
+    currentPath = '/';
+  }
+  // Ensure path doesn't end with / unless it's root
+  if (currentPath !== '/' && currentPath.endsWith('/')) {
+    currentPath = currentPath.slice(0, -1);
+  }
+  const current = currentPath;
 
   const nav = document.getElementById('nav');
   if (!nav) return;
@@ -20,7 +33,7 @@
 
   // Logo
   const logo = document.createElement('a');
-  logo.href = 'index.html';
+  logo.href = '/';
   logo.className = 'nav-logo';
   logo.textContent = 'apc';
   inner.appendChild(logo);
@@ -34,7 +47,7 @@
     const a  = document.createElement('a');
     a.href = p.href;
     a.textContent = p.label;
-    const isActive = current === p.href || (current === '' && p.href === 'index.html');
+    const isActive = current === p.href;
     if (isActive) a.classList.add('active');
     li.appendChild(a);
     ul.appendChild(li);
@@ -51,21 +64,25 @@
   const swipeThreshold = 75; // minimum distance for swipe
 
   function getCurrentPage() {
-    // Get current page filename
+    // Normalize current path
     let pathname = window.location.pathname;
-    let filename = pathname.split('/').pop();
     
-    // Handle various edge cases
-    if (!filename || filename === '' || filename === '/') {
-      return 'index.html';
+    // Remove .html extension if present
+    if (pathname.endsWith('.html')) {
+      pathname = pathname.slice(0, -5);
     }
     
-    // If no extension, assume it's the root
-    if (!filename.includes('.')) {
-      return 'index.html';
+    // Handle root/index cases
+    if (pathname === '' || pathname === '/index' || pathname === '/index.html') {
+      return '/';
     }
     
-    return filename;
+    // Ensure path doesn't end with / unless it's root
+    if (pathname !== '/' && pathname.endsWith('/')) {
+      pathname = pathname.slice(0, -1);
+    }
+    
+    return pathname;
   }
 
   function handleSwipe() {

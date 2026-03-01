@@ -1,0 +1,7 @@
+# Redirect .html extensions to extensionless URLs
+/index.html         /           301
+/experience.html    /experience 301
+/projects.html      /projects   301
+/activities.html    /activities 301
+/writing.html       /writing    301
+/contact.html       /contact    301
