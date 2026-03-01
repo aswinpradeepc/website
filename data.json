@@ -77,14 +77,14 @@
       "desc": "Scalable URL shortener with custom links, OTP-based sign-in, and Docker + GitHub Actions CI/CD on AWS EC2.",
       "tech": ["Django", "PostgreSQL", "Docker", "GitHub Actions", "AWS EC2", "Nginx"],
       "github": "https://github.com/aswinpradeepc/linkradr",
-      "live": "https://link.radr.in"
+      "live": null
     },
     {
       "name": "EduRider",
       "desc": "Route management system for school buses — role-based APIs for drivers and students, deployed on AWS with Flutter frontend integration.",
       "tech": ["Django", "PostgreSQL", "Docker", "AWS", "Nginx"],
       "github": "https://github.com/aswinpradeepc/edurider",
-      "live": "https://edurider.radr.in"
+      "live": null
     },
     {
       "name": "SOE Project Hub",
