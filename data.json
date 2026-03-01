@@ -112,22 +112,43 @@
     "ML / AI": ["LLMs", "RAG", "Azure Cognitive Services", "OpenCV", "YOLO"]
   },
 
-  "events": [
-    {
-      "title": "Make-A-Ton",
-      "subtitle": "Lead Organizer",
-      "date": "2023",
-      "description": "Led the full organization of Make-A-Ton — South India's largest hackathon — with 200+ participants and a 30-member organizing team. Secured sponsorships from GitHub, Logitech, MLH, Orkes, and GeeksForGeeks.",
-      "tags": ["Hackathon", "Leadership", "Community"],
-      "image": null
-    },
-    {
-      "title": "Summer Startup Festival 2023",
-      "subtitle": "First Prize — Project Expo",
-      "date": "2023",
-      "description": "Won First Prize in the Project Expo competition at GEC Thrissur's Summer Startup Festival.",
-      "tags": ["Award", "Competition"],
-      "image": null
-    }
-  ]
+  "activities": {
+    "community": [
+
+      {
+        "title": "Make-A-Ton 7.0",
+        "subtitle": "Lead Organizer",
+        "date": "2024",
+        "description": "Led the full organization of Make-A-Ton 7.0 — South India's largest hackathon — with 200+ participants and a 30-member organizing team. Secured sponsorships from GitHub, Logitech, MLH, Orkes, and GeeksForGeeks.",
+        "tags": ["Hackathon", "Leadership", "Community"],
+        "image": null
+      },
+      {
+        "title": "TinkerHub SOE",
+        "subtitle": "Campus Lead",
+        "date": "2023",
+        "description": "Led TinkerHub activities at School of Engineering, fostering a community of student developers and organizing technical events.",
+        "tags": ["Community", "Leadership"],
+        "image": null
+      },
+      {
+        "title": "NSS Volunteer",
+        "subtitle": "National Service Scheme",
+        "date": "2022 – 2023",
+        "description": "Participated in community service initiatives and social welfare programs under the National Service Scheme.",
+        "tags": ["Volunteering", "Community Service"],
+        "image": null
+      }
+    ],
+    "achievements": [
+      {
+        "title": "Summer Startup Festival 2023",
+        "subtitle": "First Prize — Project Expo",
+        "date": "2023",
+        "description": "Won First Prize in the Project Expo competition at GEC Thrissur's Summer Startup Festival.",
+        "tags": ["Award", "Competition"],
+        "image": null
+      }
+    ]
+  }
 }

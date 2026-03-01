@@ -4,7 +4,7 @@
     { href: 'index.html',    label: 'Home'     },
     { href: 'experience.html',     label: 'Experience'     },
     { href: 'projects.html', label: 'Projects' },
-    { href: 'events.html',   label: 'Events'   },
+    { href: 'activities.html',   label: 'Activities'   },
     { href: 'writing.html',  label: 'Writing'  },
     { href: 'contact.html',  label: 'Contact'  },
   ];
