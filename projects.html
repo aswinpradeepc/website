@@ -52,16 +52,28 @@
     `;
   }).join('');
 
-  const ossItems = opensource.map(o => `
-    <div class="oss-item fade-up">
-      <div class="oss-name">${o.project}</div>
-      <p class="oss-desc">${o.desc}</p>
-      <div class="oss-links">
-        <a class="subtle" href="${o.url}"     target="_blank" rel="noopener">Repository ↗</a>
-        <a class="subtle" href="${o.profile}" target="_blank" rel="noopener">My profile ↗</a>
+  const ossItems = opensource.map(o => {
+    let imageHtml = '';
+    if (o.image) {
+      imageHtml = `
+        <div class="event-image">
+          <img src="${o.image}" alt="${o.project}" loading="lazy" />
+        </div>
+      `;
+    }
+
+    return `
+      <div class="oss-item fade-up">
+        <div class="oss-name">${o.project}</div>
+        <p class="oss-desc">${o.desc}</p>
+        <div class="oss-links">
+          <a class="subtle" href="${o.url}"     target="_blank" rel="noopener">Repository ↗</a>
+          <a class="subtle" href="${o.profile}" target="_blank" rel="noopener">My profile ↗</a>
+        </div>
+        ${imageHtml}
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 
   container.innerHTML = `
     <div class="fade-up">
