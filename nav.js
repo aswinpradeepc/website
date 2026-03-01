@@ -46,17 +46,43 @@
   // ── Swipe Navigation (Mobile) ──
   let touchStartX = 0;
   let touchEndX = 0;
+  let touchStartY = 0;
+  let touchEndY = 0;
   const swipeThreshold = 75; // minimum distance for swipe
 
-  function handleSwipe() {
-    const swipeDistance = touchEndX - touchStartX;
-    if (Math.abs(swipeDistance) < swipeThreshold) return;
+  function getCurrentPage() {
+    // Get current page filename
+    let pathname = window.location.pathname;
+    let filename = pathname.split('/').pop();
+    
+    // Handle various edge cases
+    if (!filename || filename === '' || filename === '/') {
+      return 'index.html';
+    }
+    
+    // If no extension, assume it's the root
+    if (!filename.includes('.')) {
+      return 'index.html';
+    }
+    
+    return filename;
+  }
 
-    const currentIndex = pages.findIndex(p => p.href === current);
+  function handleSwipe() {
+    const swipeDistanceX = touchEndX - touchStartX;
+    const swipeDistanceY = Math.abs(touchEndY - touchStartY);
+    
+    // Ignore if swipe is too small or too vertical
+    if (Math.abs(swipeDistanceX) < swipeThreshold) return;
+    if (swipeDistanceY > Math.abs(swipeDistanceX) * 0.5) return; // Prevent diagonal swipes
+    
+    const currentPage = getCurrentPage();
+    const currentIndex = pages.findIndex(p => p.href === currentPage);
+    
     if (currentIndex === -1) return;
 
     let nextIndex;
-    if (swipeDistance > 0) {
+    if (swipeDistanceX > 0) {
       // Swipe right → previous page
       nextIndex = currentIndex - 1;
     } else {
@@ -71,10 +97,12 @@
 
   document.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
   }, { passive: true });
 
   document.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
     handleSwipe();
   }, { passive: true });
 })();
