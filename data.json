@@ -101,7 +101,8 @@
       "desc": "Open-source developer bio platform. Contributor — building tools that help developers present themselves better.",
       "url": "https://github.com/sunithvs/devb.io",
       "profile": "https://devb.io/aswinpradeepc",
-      "image": "images/projects/devbio.png"
+      "image": "images/projects/devbio.png",
+      "alt": "devb.io open source developer bio platform - Aswin Pradeep C contributor profile showcase"
     }
   ],
 
@@ -122,7 +123,8 @@
         "description": "Attended IndiaFOSS 2025 representing devb.io, where we put up a stall to showcase the open-source developer bio platform and engaged with the FOSS community.",
         "tags": ["Open Source", "FOSS", "Community"],
         "link": "https://www.linkedin.com/posts/aswinpradeepc_indiafoss2025-opensource-foss-ugcPost-7385247235103662080-hNKZ/",
-        "image": "images/activities/aswin-pradeep-c-india-foss-2025.jpeg"
+        "image": "images/activities/aswin-pradeep-c-india-foss-2025.jpeg",
+        "alt": "Aswin Pradeep C at IndiaFOSS 2025 conference representing devb.io open source developer bio platform stall"
       },
       {
         "title": "Make-A-Ton 7.0",
@@ -174,7 +176,8 @@
         "date": "2023",
         "description": "Won First Prize in the Project Expo competition at GEC Thrissur's Summer Startup Festival.",
         "tags": ["Award", "Competition"],
-        "image": "images/activities/aswin-pradeep-c-SSF-Thrissur.jpeg"
+        "image": "images/activities/aswin-pradeep-c-SSF-Thrissur.jpeg",
+        "alt": "Aswin Pradeep C winning First Prize at Summer Startup Festival 2023 Project Expo competition GEC Thrissur"
       }
     ]
   }

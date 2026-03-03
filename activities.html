@@ -82,9 +82,10 @@
 
       let imageHtml = '';
       if (e.image) {
+        const altText = e.alt || `Aswin Pradeep C - ${e.title} ${e.subtitle}`;
         imageHtml = `
           <div class="event-image">
-            <img src="${e.image}" alt="${e.title}" loading="lazy" />
+            <img src="${e.image}" alt="${altText}" loading="lazy" />
           </div>
         `;
       }

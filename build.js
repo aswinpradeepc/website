@@ -209,9 +209,10 @@ function fetch(url) {
   const ossItems = opensource.map(o => {
     let imageHtml = '';
     if (o.image) {
+      const altText = o.alt || `${o.project} - ${o.desc}`;
       imageHtml = `
         <div class="event-image">
-          <img src="${o.image}" alt="${o.project}" loading="lazy" />
+          <img src="${o.image}" alt="${altText}" loading="lazy" />
         </div>
       `;
     }
@@ -278,9 +279,10 @@ function fetch(url) {
 
       let imageHtml = '';
       if (e.image) {
+        const altText = e.alt || `Aswin Pradeep C - ${e.title} ${e.subtitle}`;
         imageHtml = `
           <div class="event-image">
-            <img src="${e.image}" alt="${e.title}" loading="lazy" />
+            <img src="${e.image}" alt="${altText}" loading="lazy" />
           </div>
         `;
       }
