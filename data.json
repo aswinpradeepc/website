@@ -16,8 +16,9 @@
   "now": "Digging into how things work at scale, building and breaking things to understand the process in depth. Having fun extending engineering into daily life. Recently built <a href=\"https://picnix.aswinpradeepc.com\" target=\"_blank\" rel=\"noopener\">Picnix</a> to make trip planning less painful. Writing about backend performance, LLM systems, and whatever else I learn along the way.",
   "about": [
     "I'm a backend engineer from Kerala. I write Python — FastAPI, Django, Postgres, Redis — and whatever the problem actually needs.",
-    "Most of my real learning comes from my work as a backend engineer, my college life at CUSAT where I tried building a startup and led tech clubs, and from freelancing and internships along the way. I organized Make-A-Ton 7.0, South India's largest hackathon — equal parts chaos and genuinely fun.",
-    "I have contributed to devb.io, an open-source developer bio platform, which made top 10 at FOSSHack 2025. I self-host Ente Photos with redundant backups and run a few other experiments on my homelab. If I'm not at the laptop, I'm on a cycle. 🚴"
+    "Most of my real learning comes from my work as a backend engineer, my college life at CUSAT where I tried building a startup and led tech clubs, and from freelancing and internships along the way. I organized <a href=\"https://2024.makeaton.in\" target=\"_blank\" rel=\"noopener\">Make-A-Ton 7.0</a>, South India's largest hackathon — equal parts chaos and genuinely fun.",
+    "I have contributed to <a href=\"https://devb.io/aswinpradeepc\" target=\"_blank\" rel=\"noopener\">devb.io</a>, an open-source developer bio platform, which made top 10 at FOSSHack 2025. I self-host Ente Photos with redundant backups and run a few other experiments on my homelab.",
+    "If I'm not at the laptop, I'm on a cycle 🚴"
   ],
   "experience": [
     {
