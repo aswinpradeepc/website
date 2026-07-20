@@ -174,7 +174,10 @@ function bakeFooter(html, meta) {
     </div>
 
     <section>
-      <span class="section-label">Experience</span>
+      <div class="section-head">
+        <span class="section-label">Experience</span>
+        <a class="resume-link" href="/cv" target="_blank" rel="noopener">Résumé (PDF) ↓</a>
+      </div>
       <div class="timeline">
         ${timelineItems}
       </div>
@@ -187,7 +190,7 @@ function bakeFooter(html, meta) {
       <div class="edu-block">
         <div class="edu-inst">${education.institution}</div>
         <div class="edu-degree">${education.degree}</div>
-        <div class="edu-meta">${education.period} · CGPA ${education.cgpa}</div>
+        <div class="edu-meta">${education.period} · ${education.grade}</div>
       </div>
     </section>
 
@@ -508,7 +511,8 @@ function bakeFooter(html, meta) {
     'humans.txt',
     'sitemap.xml',
     '_headers',
-    '_redirects'
+    '_redirects',
+    'aswinpradeepc.pdf'
   ];
 
   staticFiles.forEach(file => {

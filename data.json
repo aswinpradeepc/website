@@ -22,26 +22,30 @@
   "experience": [
     {
       "company": "Kireap",
-      "role": "Software Engineer",
-      "period": "2025 – Present",
+      "role": "Backend Engineer",
+      "period": "April 2025 – July 2026",
       "location": "Kochi, Kerala",
       "bullets": [
-        "Building and maintaining core backend systems.",
-        "Full-time role post-graduation."
+        "Built agentic pipelines using LangGraph — featuring autonomous tool-calling, sandboxed code execution, and self-correction loops for multi-step task completion.",
+        "Cut latency on a CPU-bound dynamic pricing API from 9s to under 2s: profiled hotspots, parallelised computation with ProcessPoolExecutor, batched I/O with asyncio.gather, and added HTTP connection pooling, Redis caching, and exponential backoff with jitter."
       ],
       "tech": [
         "Python",
-        "FastAPI"
+        "FastAPI",
+        "LangGraph",
+        "LLMs",
+        "Redis",
+        "Algorithms"
       ]
     },
     {
       "company": "Geojit Financial Services Ltd",
       "role": "Machine Learning Intern",
-      "period": "Dec 2024 – 2025",
+      "period": "Dec 2024 – March 2025",
       "location": "Kochi, Kerala",
       "bullets": [
         "Developed an LLM-based search system with RAG architecture for enhanced financial data retrieval.",
-        "Automated manual processes with machine learning to improve operational efficiency."
+        "Automated and optimized manual processes with machine learning to improve efficiency."
       ],
       "tech": [
         "LLMs",
@@ -68,12 +72,12 @@
     },
     {
       "company": "Agua India",
-      "role": "ML Engineer Intern",
-      "period": "Jun 2024",
+      "role": "Machine Learning Engineer Intern",
+      "period": "June 2024",
       "location": "Kochi, Kerala",
       "bullets": [
-        "Built a prototype using OpenCV for automated coupon code extraction from delivery images.",
-        "Implemented ROI detection to filter irrelevant text and streamline water delivery operations."
+        "Proposed and developed proof-of-concept implementations for AI-powered workflow optimizations.",
+        "Built a prototype using OpenCV for automated coupon code extraction, using region-of-interest detection to filter out irrelevant text and streamline water delivery operations."
       ],
       "tech": [
         "OpenCV",
@@ -87,7 +91,7 @@
     "institution": "Cochin University of Science and Technology",
     "degree": "B.Tech in Computer Science and Engineering",
     "period": "2021 – 2025",
-    "cgpa": "8.08"
+    "grade": "First Class with Distinction"
   },
   "projects": [
     {
