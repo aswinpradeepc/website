@@ -5,3 +5,7 @@
 /activities.html    /activities 301
 /writing.html       /writing    301
 /contact.html       /contact    301
+
+# Short link to the resume
+/cv                 /aswinpradeepc.pdf  302
+/resume             /aswinpradeepc.pdf  302
