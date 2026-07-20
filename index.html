@@ -93,6 +93,7 @@
         <a href="mailto:${meta.email}">${meta.email}</a>
         <a href="${meta.links.github}" target="_blank" rel="noopener">GitHub</a>
         <a href="${meta.links.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="${meta.links.medium}" target="_blank" rel="noopener">Medium</a>
         <a href="${meta.links.x}" target="_blank" rel="noopener">X</a>
         <a href="${meta.links.devbio}" target="_blank" rel="noopener">devb.io</a>
       </div>
@@ -108,7 +109,7 @@
     <section class="fade-up">
       <span class="section-label">About</span>
       <div class="about-block">
-        <p>${about}</p>
+        ${about.map(p => `<p>${p}</p>`).join('')}
       </div>
     </section>
   `;

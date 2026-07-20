@@ -690,6 +690,10 @@ a.subtle:hover {
   max-width: 540px;
 }
 
+.about-block p + p {
+  margin-top: 0.9rem;
+}
+
 /* ── EDUCATION BLOCK ── */
 .edu-block {
   padding: 1.25rem;

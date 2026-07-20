@@ -36,6 +36,35 @@ function fetch(url) {
   });
 }
 
+// Pre-render the footer that footer.js builds at runtime, so dist/ needs no
+// fetch to render a complete page. Keep in sync with footer.js.
+function renderFooter(meta) {
+  const year = new Date().getFullYear();
+  return `
+        <div class="footer-inner">
+          <div class="footer-links">
+            <a href="mailto:${meta.email}">Email</a>
+            <a href="${meta.links.github}" target="_blank" rel="noopener">GitHub</a>
+            <a href="${meta.links.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="${meta.links.medium}" target="_blank" rel="noopener">Medium</a>
+            <a href="${meta.links.x}" target="_blank" rel="noopener">X</a>
+            <a href="${meta.links.devbio}" target="_blank" rel="noopener">devb.io</a>
+          </div>
+          <span class="footer-copy">© ${meta.name} ${year}</span>
+        </div>
+  `;
+}
+
+// Inline the footer markup and drop the now-redundant footer.js script tag.
+function bakeFooter(html, meta) {
+  return html
+    .replace(
+      '<footer id="footer"></footer>',
+      `<footer id="footer">${renderFooter(meta)}</footer>`
+    )
+    .replace(/\s*<script src="footer\.js"><\/script>/, '');
+}
+
 // ── Main Build ──
 
 (async () => {
@@ -66,6 +95,7 @@ function fetch(url) {
         <a href="mailto:${meta.email}">${meta.email}</a>
         <a href="${meta.links.github}" target="_blank" rel="noopener">GitHub</a>
         <a href="${meta.links.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="${meta.links.medium}" target="_blank" rel="noopener">Medium</a>
         <a href="${meta.links.x}" target="_blank" rel="noopener">X</a>
         <a href="${meta.links.devbio}" target="_blank" rel="noopener">devb.io</a>
       </div>
@@ -81,7 +111,7 @@ function fetch(url) {
     <section class="fade-up">
       <span class="section-label">About</span>
       <div class="about-block">
-        <p>${about}</p>
+        ${about.map(p => `<p>${p}</p>`).join('')}
       </div>
     </section>
   `;
@@ -97,7 +127,7 @@ function fetch(url) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'index.html'), indexHtml);
+  fs.writeFileSync(path.join(distDir, 'index.html'), bakeFooter(indexHtml, meta));
 
   // ═══════════════════════════════════════════════════════════
   // 2. EXPERIENCE
@@ -177,7 +207,7 @@ function fetch(url) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'experience.html'), expHtml);
+  fs.writeFileSync(path.join(distDir, 'experience.html'), bakeFooter(expHtml, meta));
 
   // ═══════════════════════════════════════════════════════════
   // 3. PROJECTS
@@ -262,7 +292,7 @@ function fetch(url) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'projects.html'), projHtml);
+  fs.writeFileSync(path.join(distDir, 'projects.html'), bakeFooter(projHtml, meta));
 
   // ═══════════════════════════════════════════════════════════
   // 4. ACTIVITIES
@@ -344,7 +374,7 @@ function fetch(url) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'activities.html'), actHtml);
+  fs.writeFileSync(path.join(distDir, 'activities.html'), bakeFooter(actHtml, meta));
 
   // ═══════════════════════════════════════════════════════════
   // 5. CONTACT
@@ -454,25 +484,27 @@ function fetch(url) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'writing.html'), writingHtml);
+  fs.writeFileSync(path.join(distDir, 'writing.html'), bakeFooter(writingHtml, meta));
 
   // ═══════════════════════════════════════════════════════════
   // 7. Copy Static Assets
   // ═══════════════════════════════════════════════════════════
+
+  // 404 gets the same baked footer as every other page
+  const notFoundHtml = fs.readFileSync('./404.html', 'utf8');
+  fs.writeFileSync(path.join(distDir, '404.html'), bakeFooter(notFoundHtml, meta));
 
   console.log('\n📦 Copying static assets...');
 
   const staticFiles = [
     'style.css',
     'nav.js',
-    'footer.js',
     'data.json',
     'robots.txt',
     'humans.txt',
     'sitemap.xml',
     '_headers',
-    '_redirects',
-    '404.html'
+    '_redirects'
   ];
 
   staticFiles.forEach(file => {

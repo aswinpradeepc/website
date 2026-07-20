@@ -1,22 +1,24 @@
 {
   "meta": {
     "name": "Aswin Pradeep C",
-    "tagline": "Software Engineer. I build backends, break things, and occasionally fix them.",
+    "tagline": "Engineer by obsession. SWE, cyclist, self-hoster, occasional open source contributor.",
     "email": "hi@aswinpradeepc.com",
     "location": "Kochi, Kerala",
     "links": {
       "github": "https://github.com/aswinpradeepc",
       "linkedin": "https://linkedin.com/in/aswinpradeepc",
+      "medium": "https://medium.com/@aswinpradeepc",
       "x": "https://x.com/aswinpradeepc",
       "devbio": "https://devb.io/aswinpradeepc"
     },
     "medium_username": "aswinpradeepc"
   },
-
-  "now": "Currently building software at Kireap. Contributing to devb.io — an open-source developer bio platform. Previously interned at Geojit Financial Services, where I worked on an LLM-based search system using RAG for financial data retrieval. Finished my B.Tech in CS at CUSAT, class of 2025.",
-
-  "about": "I'm a backend engineer from Kerala. I care about systems that are simple to reason about, fast to iterate on, and don't fall apart under load. I organized Make-A-Ton 7.0, South India's largest hackathon — equal parts chaos and genuinely fun. Outside work: chai, bad puns, and side projects I may or may not finish.",
-
+  "now": "Digging into how things work at scale, building and breaking things to understand the process in depth. Having fun extending engineering into daily life. Recently built <a href=\"https://picnix.aswinpradeepc.com\" target=\"_blank\" rel=\"noopener\">Picnix</a> to make trip planning less painful. Writing about backend performance, LLM systems, and whatever else I learn along the way.",
+  "about": [
+    "I'm a backend engineer from Kerala. I write Python — FastAPI, Django, Postgres, Redis — and whatever the problem actually needs.",
+    "Most of my real learning comes from my work as a backend engineer, my college life at CUSAT where I tried building a startup and led tech clubs, and from freelancing and internships along the way. I organized Make-A-Ton 7.0, South India's largest hackathon — equal parts chaos and genuinely fun.",
+    "I have contributed to devb.io, an open-source developer bio platform, which made top 10 at FOSSHack 2025. I self-host Ente Photos with redundant backups and run a few other experiments on my homelab. If I'm not at the laptop, I'm on a cycle. 🚴"
+  ],
   "experience": [
     {
       "company": "Kireap",
@@ -27,7 +29,10 @@
         "Building and maintaining core backend systems.",
         "Full-time role post-graduation."
       ],
-      "tech": ["Python", "FastAPI"]
+      "tech": [
+        "Python",
+        "FastAPI"
+      ]
     },
     {
       "company": "Geojit Financial Services Ltd",
@@ -38,7 +43,12 @@
         "Developed an LLM-based search system with RAG architecture for enhanced financial data retrieval.",
         "Automated manual processes with machine learning to improve operational efficiency."
       ],
-      "tech": ["LLMs", "RAG", "Azure Cognitive Services", "Python"]
+      "tech": [
+        "LLMs",
+        "RAG",
+        "Azure Cognitive Services",
+        "Python"
+      ]
     },
     {
       "company": "Lascade LLC",
@@ -49,7 +59,12 @@
         "Built RESTful APIs for the travel module with input validation and error handling.",
         "Reduced response times significantly on high-traffic endpoints using Redis caching."
       ],
-      "tech": ["Node.js", "Express.js", "MongoDB", "Redis"]
+      "tech": [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Redis"
+      ]
     },
     {
       "company": "Agua India",
@@ -60,41 +75,60 @@
         "Built a prototype using OpenCV for automated coupon code extraction from delivery images.",
         "Implemented ROI detection to filter irrelevant text and streamline water delivery operations."
       ],
-      "tech": ["OpenCV", "YOLO", "Python", "Mapbox"]
+      "tech": [
+        "OpenCV",
+        "YOLO",
+        "Python",
+        "Mapbox"
+      ]
     }
   ],
-
   "education": {
     "institution": "Cochin University of Science and Technology",
     "degree": "B.Tech in Computer Science and Engineering",
     "period": "2021 – 2025",
     "cgpa": "8.08"
   },
-
   "projects": [
     {
       "name": "LinkRadr",
       "desc": "Scalable URL shortener with custom links, OTP-based sign-in, and Docker + GitHub Actions CI/CD on AWS EC2.",
-      "tech": ["Django", "PostgreSQL", "Docker", "GitHub Actions", "AWS EC2", "Nginx"],
+      "tech": [
+        "Django",
+        "PostgreSQL",
+        "Docker",
+        "GitHub Actions",
+        "AWS EC2",
+        "Nginx"
+      ],
       "github": "https://github.com/aswinpradeepc/linkradr",
       "live": null
     },
     {
       "name": "EduRider",
       "desc": "Route management system for school buses — role-based APIs for drivers and students, deployed on AWS with Flutter frontend integration.",
-      "tech": ["Django", "PostgreSQL", "Docker", "AWS", "Nginx"],
+      "tech": [
+        "Django",
+        "PostgreSQL",
+        "Docker",
+        "AWS",
+        "Nginx"
+      ],
       "github": "https://github.com/aswinpradeepc/edurider",
       "live": null
     },
     {
       "name": "SOE Project Hub",
       "desc": "Academic project management system with role-based access, plagiarism checking, team management, document uploads, and support ticket system.",
-      "tech": ["Django", "JavaScript", "SQLite"],
+      "tech": [
+        "Django",
+        "JavaScript",
+        "SQLite"
+      ],
       "github": "https://github.com/aswinpradeepc/soe-project-hub",
       "live": null
     }
   ],
-
   "opensource": [
     {
       "project": "devb.io",
@@ -105,15 +139,38 @@
       "alt": "devb.io open source developer bio platform - Aswin Pradeep C contributor profile showcase"
     }
   ],
-
   "skills": {
-    "Languages": ["Python", "JavaScript", "SQL"],
-    "Backend": ["FastAPI", "Django", "Node.js / Express.js"],
-    "Databases": ["PostgreSQL", "MongoDB", "Redis", "MySQL"],
-    "Infrastructure": ["Docker", "AWS EC2", "Linux", "Nginx", "GitHub Actions"],
-    "ML / AI": ["LLMs", "RAG", "Azure Cognitive Services", "OpenCV", "YOLO"]
+    "Languages": [
+      "Python",
+      "JavaScript",
+      "SQL"
+    ],
+    "Backend": [
+      "FastAPI",
+      "Django",
+      "Node.js / Express.js"
+    ],
+    "Databases": [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "MySQL"
+    ],
+    "Infrastructure": [
+      "Docker",
+      "AWS EC2",
+      "Linux",
+      "Nginx",
+      "GitHub Actions"
+    ],
+    "ML / AI": [
+      "LLMs",
+      "RAG",
+      "Azure Cognitive Services",
+      "OpenCV",
+      "YOLO"
+    ]
   },
-
   "activities": {
     "community": [
       {
@@ -121,7 +178,11 @@
         "subtitle": "Representing devb.io",
         "date": "2025",
         "description": "Attended IndiaFOSS 2025 representing devb.io, where we put up a stall to showcase the open-source developer bio platform and engaged with the FOSS community.",
-        "tags": ["Open Source", "FOSS", "Community"],
+        "tags": [
+          "Open Source",
+          "FOSS",
+          "Community"
+        ],
         "link": "https://www.linkedin.com/posts/aswinpradeepc_indiafoss2025-opensource-foss-ugcPost-7385247235103662080-hNKZ/",
         "image": "images/activities/aswin-pradeep-c-india-foss-2025.jpeg",
         "alt": "Aswin Pradeep C at IndiaFOSS 2025 conference representing devb.io open source developer bio platform stall"
@@ -131,7 +192,11 @@
         "subtitle": "Lead Organizer",
         "date": "2024",
         "description": "Led the full organization of Make-A-Ton 7.0 — South India's largest hackathon — with 200+ participants and a 30-member organizing team. Secured sponsorships from GitHub, Logitech, MLH, Orkes, and GeeksForGeeks.",
-        "tags": ["Hackathon", "Leadership", "Community"],
+        "tags": [
+          "Hackathon",
+          "Leadership",
+          "Community"
+        ],
         "link": "https://2024.makeaton.in/",
         "image": null
       },
@@ -140,7 +205,11 @@
         "subtitle": "Student Lead",
         "date": "2024",
         "description": "Led a team to organize events that encourage student entrepreneurship activities with events like Innovate and Elevate, Redbull Basement Local edition at CUSAT, Network Nest, and more.",
-        "tags": ["Entrepreneurship", "Leadership", "Community"],
+        "tags": [
+          "Entrepreneurship",
+          "Leadership",
+          "Community"
+        ],
         "image": null
       },
       {
@@ -148,7 +217,10 @@
         "subtitle": "Campus Lead",
         "date": "2023",
         "description": "Led TinkerHub activities at School of Engineering, fostering a community of student developers and organizing technical events.",
-        "tags": ["Community", "Leadership"],
+        "tags": [
+          "Community",
+          "Leadership"
+        ],
         "image": null
       },
       {
@@ -156,7 +228,10 @@
         "subtitle": "National Service Scheme",
         "date": "2022 – 2023",
         "description": "Participated in community service initiatives and social welfare programs under the National Service Scheme.",
-        "tags": ["Volunteering", "Community Service"],
+        "tags": [
+          "Volunteering",
+          "Community Service"
+        ],
         "image": null
       }
     ],
@@ -166,7 +241,11 @@
         "subtitle": "TOP 10 — devb.io",
         "date": "2025",
         "description": "Devb.io project ranked among top 10 projects at FOSS Hack 2025.",
-        "tags": ["Open Source", "Award", "Competition"],
+        "tags": [
+          "Open Source",
+          "Award",
+          "Competition"
+        ],
         "link": "https://forum.fossunited.org/t/foss-hack-2025-results/5541",
         "image": null
       },
@@ -175,7 +254,10 @@
         "subtitle": "First Prize — Project Expo",
         "date": "2023",
         "description": "Won First Prize in the Project Expo competition at GEC Thrissur's Summer Startup Festival.",
-        "tags": ["Award", "Competition"],
+        "tags": [
+          "Award",
+          "Competition"
+        ],
         "image": "images/activities/aswin-pradeep-c-SSF-Thrissur.jpeg",
         "alt": "Aswin Pradeep C winning First Prize at Summer Startup Festival 2023 Project Expo competition GEC Thrissur"
       }
