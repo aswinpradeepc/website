@@ -678,10 +678,45 @@ a.subtle:hover {
 
 .home-nav-links a:hover { opacity: 0.4; }
 
+.now-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
 .now-block p {
   font-size: 0.95rem;
   color: var(--ink-2);
   max-width: 540px;
+  flex: 1;
+}
+
+/* ── PROFILE PHOTO (wiki-infobox style) ── */
+.profile-photo {
+  --photo-size: 148px;
+  flex-shrink: 0;
+  width: calc(var(--photo-size) + 12px); /* image + horizontal padding + border */
+  margin: 0;
+  padding: 5px;
+  border: 1px solid var(--faint);
+  background: var(--faintest);
+  border-radius: 2px;
+}
+
+.profile-photo img {
+  display: block;
+  width: var(--photo-size);
+  height: var(--photo-size);
+  object-fit: cover;
+}
+
+.profile-photo figcaption {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  line-height: 1.4;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 5px;
 }
 
 .about-block p {
@@ -780,6 +815,15 @@ a.subtle:hover {
     font-size: 0.88rem;
   }
 
+  /* Keep the photo alongside the Now text on tablets, just a touch smaller */
+  .now-block {
+    gap: 1.5rem;
+  }
+
+  .profile-photo {
+    --photo-size: 132px;
+  }
+
   /* Better project spacing */
   .project-item {
     padding-bottom: 1.75rem;
@@ -794,6 +838,23 @@ a.subtle:hover {
   /* Compact education block */
   .edu-block {
     padding: 1rem;
+  }
+}
+
+/* ── PHONES ONLY: stack the profile photo below the Now text, centred ── */
+@media (max-width: 600px) {
+  .now-block {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .now-block p {
+    align-self: stretch;
+  }
+
+  .profile-photo {
+    --photo-size: 128px;
   }
 }
 

@@ -105,6 +105,10 @@ function bakeFooter(html, meta) {
       <span class="section-label">Now</span>
       <div class="now-block">
         <p>${now}</p>
+        <figure class="profile-photo">
+          <img src="images/aswin-pradeep-c-profile-pic.jpg" alt="Aswin Pradeep C" width="148" height="148" loading="lazy" decoding="async" />
+          <figcaption>Aswin Pradeep C in 2026</figcaption>
+        </figure>
       </div>
     </section>
 
