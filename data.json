@@ -13,7 +13,7 @@
     },
     "medium_username": "aswinpradeepc"
   },
-  "now": "Digging into how things work at scale, building and breaking things to understand the process in depth. Having fun extending engineering into daily life. Recently built <a href=\"https://picnix.aswinpradeepc.com\" target=\"_blank\" rel=\"noopener\">Picnix</a> to make trip planning less painful. Writing about backend performance, LLM systems, and whatever else I learn along the way.",
+  "now": "Digging into how things work at scale, building and breaking things to understand the process in depth. Having fun extending engineering into daily life. Recently built <a href=\"https://medium.com/@aswinpradeepc/why-rule-based-trip-planners-fail-and-what-i-built-with-langgraph-instead-c9ca78284cb5\" target=\"_blank\" rel=\"noopener\">Picnix</a> to make trip planning less painful. Writing about backend performance, LLM systems, and whatever else I learn along the way.",
   "about": [
     "I'm a backend engineer from Kerala. I write Python — FastAPI, Django, Postgres, Redis and whatever the problem actually needs.",
     "Most of my real learning comes from my work as a backend engineer, my college life at CUSAT where I tried building a startup and led tech clubs, and from freelancing and internships along the way. I organized <a href=\"https://2024.makeaton.in\" target=\"_blank\" rel=\"noopener\">Make-A-Ton 7.0</a>, South India's largest hackathon — equal parts chaos and genuinely fun.",
