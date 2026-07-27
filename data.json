@@ -96,15 +96,55 @@
   },
   "projects": [
     {
+      "name": "Picnix",
+      "desc": "Agentic day-trip planner that turns \"I'm free on Saturday\" into a verified, mapped, minute-by-minute itinerary. An 8-node LangGraph state machine with human-in-the-loop interrupts validates every stop against live Google Places and Routes data before it reaches the user, and a semantic validator strips any claim it can't trace back to verified data. Ships a Trip Auditor — a second Gemini agent whose entire tool surface is Arize Phoenix trace data over MCP, so it can explain why the planner made each decision.",
+      "tech": [
+        "LangGraph",
+        "Gemini",
+        "Vertex AI",
+        "FastAPI",
+        "Arize Phoenix",
+        "MCP",
+        "Mapbox"
+      ],
+      "github": "https://github.com/aswinpradeepc/picnix",
+      "live": "https://picnix.aswinpradeepc.com"
+    },
+    {
+      "name": "LLMSearch",
+      "desc": "AI-powered search tool for querying financial reports, mutual fund documents, and market research in natural language. Built with FastAPI, Streamlit, OpenAI embeddings, and Pinecone vector search.",
+      "tech": [
+        "OpenAI",
+        "Pinecone",
+        "FastAPI",
+        "Streamlit"
+      ],
+      "github": "https://github.com/aswinpradeepc/llmsearch",
+      "live": null
+    },
+    {
+      "name": "PitchMailer",
+      "desc": "AI orchestration platform for automated personalised job outreach, with an LLM pipeline that generates context-aware emails from retrieval-augmented company profiling. Async workflows on Celery and Redis handle multi-stage AI tasks — company research, prompt chaining, and rate-limited delivery — containerised with Docker and deployed through automated workflows.",
+      "tech": [
+        "Django",
+        "Celery",
+        "Redis",
+        "OpenAI API",
+        "Docker"
+      ],
+      "github": "https://github.com/aswinpradeepc/pitchmailer",
+      "live": null
+    }
+  ],
+  "moreProjects": [
+    {
       "name": "LinkRadr",
       "desc": "Scalable URL shortener with custom links, OTP-based sign-in, and Docker + GitHub Actions CI/CD on AWS EC2.",
       "tech": [
         "Django",
         "PostgreSQL",
         "Docker",
-        "GitHub Actions",
-        "AWS EC2",
-        "Nginx"
+        "AWS EC2"
       ],
       "github": "https://github.com/aswinpradeepc/linkradr",
       "live": null
@@ -116,21 +156,39 @@
         "Django",
         "PostgreSQL",
         "Docker",
-        "AWS",
-        "Nginx"
+        "AWS"
       ],
       "github": "https://github.com/aswinpradeepc/edurider",
       "live": null
     },
     {
       "name": "SOE Project Hub",
-      "desc": "Academic project management system with role-based access, plagiarism checking, team management, document uploads, and support ticket system.",
+      "desc": "Academic project management system with role-based access, plagiarism checking, team management, and document uploads.",
       "tech": [
         "Django",
         "JavaScript",
         "SQLite"
       ],
       "github": "https://github.com/aswinpradeepc/soe-project-hub",
+      "live": null
+    },
+    {
+      "name": "Bibliobazaar",
+      "desc": "An e-commerce book-selling website developed using Django.",
+      "tech": [
+        "Django",
+        "CSS"
+      ],
+      "github": "https://github.com/aswinpradeepc/Bibliobazaar",
+      "live": null
+    },
+    {
+      "name": "Fidget-a-Ton",
+      "desc": "Design files of swag made for Make-A-Ton 6.0.",
+      "tech": [
+        "Design"
+      ],
+      "github": "https://github.com/aswinpradeepc/Fidget-a-Ton",
       "live": null
     }
   ],

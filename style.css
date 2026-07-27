@@ -418,6 +418,54 @@ a.subtle:hover {
   line-height: 1.65;
 }
 
+/* ── PROJECT GALLERY (small cards) ── */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--faint);
+  border-radius: 3px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
+}
+
+.project-card:hover {
+  border-color: var(--ink);
+}
+
+.project-card .project-name-row {
+  margin-bottom: 0.3rem;
+  justify-content: space-between;
+}
+
+.project-card .project-name {
+  font-size: 0.9rem;
+}
+
+.project-card .project-desc {
+  font-size: 0.82rem;
+  flex: 1;
+}
+
+.project-card .tags {
+  margin-top: 0.7rem;
+}
+
+.card-arrow {
+  font-size: 0.75rem;
+  font-family: var(--mono);
+  color: var(--muted);
+}
+
+.project-card:hover .card-arrow { color: var(--ink); }
+
 /* ── OSS ── */
 .oss-item {
   padding: 1.25rem;

@@ -223,7 +223,7 @@ function bakeFooter(html, meta) {
   console.log('📄 Building projects.html...');
   let projHtml = fs.readFileSync('./projects.html', 'utf8');
 
-  const { projects, opensource } = data;
+  const { projects, moreProjects, opensource } = data;
 
   const projectItems = projects.map(p => {
     const links = [
@@ -240,6 +240,20 @@ function bakeFooter(html, meta) {
         <p class="project-desc">${p.desc}</p>
         <div class="tags">${tags}</div>
       </div>
+    `;
+  }).join('');
+
+  const moreItems = (moreProjects || []).map(p => {
+    const tags = p.tech.map(t => `<span class="tag">${t}</span>`).join('');
+    return `
+      <a class="project-card fade-up" href="${p.github}" target="_blank" rel="noopener">
+        <div class="project-name-row">
+          <span class="project-name">${p.name}</span>
+          <span class="card-arrow">GitHub ↗</span>
+        </div>
+        <p class="project-desc">${p.desc}</p>
+        <div class="tags">${tags}</div>
+      </a>
     `;
   }).join('');
 
@@ -276,9 +290,6 @@ function bakeFooter(html, meta) {
     <section>
       <span class="section-label">Selected work</span>
       ${projectItems}
-      <p style="margin-top:1.5rem;font-size:.8rem;color:var(--muted);">
-        More on <a class="subtle" href="${meta.links.github}" target="_blank" rel="noopener">GitHub ↗</a>
-      </p>
     </section>
 
     <hr class="divider">
@@ -286,6 +297,16 @@ function bakeFooter(html, meta) {
     <section>
       <span class="section-label">Open Source</span>
       ${ossItems}
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <span class="section-label">More projects</span>
+      <div class="project-grid">${moreItems}</div>
+      <p style="margin-top:1.5rem;font-size:.8rem;color:var(--muted);">
+        More on <a class="subtle" href="${meta.links.github}" target="_blank" rel="noopener">GitHub ↗</a>
+      </p>
     </section>
   `;
 
