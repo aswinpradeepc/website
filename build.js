@@ -65,6 +65,32 @@ function bakeFooter(html, meta) {
     .replace(/\s*<script src="footer\.js"><\/script>/, '');
 }
 
+// Build the _redirects file: the hand-written rules, plus one short link per
+// entry in data.json's "blog" array (/blog/<slug> → the post itself).
+// 302 rather than 301 so a slug can be repointed later without fighting
+// browsers that have cached a permanent redirect.
+function buildRedirects(blog) {
+  const base = fs.readFileSync('./_redirects', 'utf8').trimEnd();
+  const posts = blog || [];
+  const seen = new Set();
+
+  const lines = posts.map(({ slug, url }) => {
+    if (!slug || !url) {
+      throw new Error(`blog entry needs both "slug" and "url": ${JSON.stringify({ slug, url })}`);
+    }
+    if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) {
+      throw new Error(`blog slug "${slug}" must be lowercase letters, numbers and hyphens`);
+    }
+    if (seen.has(slug)) {
+      throw new Error(`duplicate blog slug "${slug}"`);
+    }
+    seen.add(slug);
+    return `/blog/${slug}`.padEnd(20) + url + '  302';
+  });
+
+  return `${base}\n${lines.join('\n')}\n`;
+}
+
 // ── Main Build ──
 
 (async () => {
@@ -461,11 +487,11 @@ function bakeFooter(html, meta) {
   fs.writeFileSync(path.join(distDir, 'contact.html'), contactHtml);
 
   // ═══════════════════════════════════════════════════════════
-  // 6. WRITING (Fetch Medium RSS)
+  // 6. BLOG (Fetch Medium RSS)
   // ═══════════════════════════════════════════════════════════
 
-  console.log('📄 Building writing.html...');
-  let writingHtml = fs.readFileSync('./writing.html', 'utf8');
+  console.log('📄 Building blog.html...');
+  let blogPageHtml = fs.readFileSync('./blog.html', 'utf8');
 
   const username = data.meta.medium_username || 'aswinpradeepc';
   let blogHTML = '';
@@ -502,17 +528,17 @@ function bakeFooter(html, meta) {
   }
 
   // Replace the blog-list div content (skeleton) with actual content or fallback
-  writingHtml = writingHtml.replace(
+  blogPageHtml = blogPageHtml.replace(
     /<div id="blog-list">[\s\S]*?<\/div>\s*\n\s*<!-- Rick roll — hidden until no posts found -->\s*\n\s*<div class="rick-zone"[\s\S]*?<\/div>/,
     `<div id="blog-list">${blogHTML}</div>`
   );
 
-  writingHtml = writingHtml.replace(
+  blogPageHtml = blogPageHtml.replace(
     /<script>\s*\(async \(\) => \{[\s\S]*?\}\)\(\);\s*<\/script>\s*<\/body>/,
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'writing.html'), bakeFooter(writingHtml, meta));
+  fs.writeFileSync(path.join(distDir, 'blog.html'), bakeFooter(blogPageHtml, meta));
 
   // ═══════════════════════════════════════════════════════════
   // 7. Copy Static Assets
@@ -532,7 +558,6 @@ function bakeFooter(html, meta) {
     'humans.txt',
     'sitemap.xml',
     '_headers',
-    '_redirects',
     'aswinpradeepc.pdf'
   ];
 
@@ -542,6 +567,10 @@ function bakeFooter(html, meta) {
       console.log(`   ✓ ${file}`);
     }
   });
+
+  // _redirects is generated, not copied — it picks up the per-post short links
+  fs.writeFileSync(path.join(distDir, '_redirects'), buildRedirects(data.blog));
+  console.log(`   ✓ _redirects (+${(data.blog || []).length} post short links)`);
 
   // Copy favicon
   const faviconFiles = fs.readdirSync('.').filter(f => f.startsWith('favicon'));

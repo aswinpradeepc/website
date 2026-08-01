@@ -64,7 +64,7 @@ experience.html: ~6 KB ✅
 projects.html:   ~5 KB ✅
 activities.html: ~8 KB ✅
 contact.html:    ~4 KB ✅
-writing.html:    ~3 KB ✅
+blog.html:       ~3 KB ✅
 ```
 
 ## ✅ Documentation

@@ -145,7 +145,7 @@ A complete **Static Site Generation (SSG)** build system using JavaScript/Node.j
 3. **projects.html** - Project cards with tech tags
 4. **activities.html** - Community & achievements with images
 5. **contact.html** - Contact info and social links
-6. **writing.html** - Medium blog posts (fetched at build time)
+6. **blog.html** - Medium blog posts (fetched at build time)
 
 ## 🛠️ Technical Details
 
@@ -158,7 +158,7 @@ A complete **Static Site Generation (SSG)** build system using JavaScript/Node.j
    c. Inject into <div id="X-content">
    d. Remove client-side fetch scripts
    e. Write to dist/X.html
-3. Fetch Medium RSS for writing.html
+3. Fetch Medium RSS for blog.html
 4. Copy static assets (CSS, JS, images)
 5. Output to dist/
 ```

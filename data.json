@@ -13,6 +13,16 @@
     },
     "medium_username": "aswinpradeepc"
   },
+  "blog": [
+    {
+      "slug": "picnix",
+      "url": "https://medium.com/@aswinpradeepc/why-rule-based-trip-planners-fail-and-what-i-built-with-langgraph-instead-c9ca78284cb5"
+    },
+    {
+      "slug": "api-latency",
+      "url": "https://medium.com/@aswinpradeepc/how-we-took-a-cpu-heavy-api-from-9-seconds-to-under-2-1734b4203ebe"
+    }
+  ],
   "now": "Digging into how things work at scale, building and breaking things to understand the process in depth. Having fun extending engineering into daily life. Recently built <a href=\"https://picnix.aswinpradeepc.com\" target=\"_blank\" rel=\"noopener\">Picnix</a> to make trip planning less painful. Writing about backend performance, LLM systems, and whatever else I learn along the way.",
   "about": [
     "I'm a backend engineer from Kerala. I write Python — FastAPI, Django, Postgres, Redis and whatever the problem actually needs.",

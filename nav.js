@@ -5,7 +5,7 @@
     { href: '/experience',     label: 'Experience'     },
     { href: '/projects', label: 'Projects' },
     { href: '/activities',   label: 'Activities'   },
-    { href: '/writing',  label: 'Writing'  },
+    { href: '/blog',  label: 'Blog'  },
     { href: '/contact',  label: 'Contact'  },
   ];
 
