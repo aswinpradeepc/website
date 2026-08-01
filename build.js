@@ -28,12 +28,55 @@ function copyDir(src, dest) {
 
 function fetch(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
+    const req = https.get(url, { timeout: 10000 }, (res) => {
+      // Reject non-200 up front, otherwise an error page or a 429 body gets
+      // handed to JSON.parse and surfaces as a confusing parse error.
+      if (res.statusCode !== 200) {
+        res.resume();
+        reject(new Error(`HTTP ${res.statusCode} from ${url}`));
+        return;
+      }
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => resolve(data));
-    }).on('error', reject);
+    });
+    req.on('timeout', () => req.destroy(new Error(`timed out after 10s: ${url}`)));
+    req.on('error', reject);
   });
+}
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+// rss2json's free tier is rate-limited and intermittently flaky. A single blip
+// used to bake the "nothing published yet" fallback into a live deploy, so
+// retry a few times before believing it.
+async function fetchWithRetry(url, attempts = 3) {
+  let lastErr;
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      return await fetch(url);
+    } catch (err) {
+      lastErr = err;
+      if (i < attempts) {
+        const backoff = 1000 * i;
+        console.log(`   ⚠️  attempt ${i}/${attempts} failed (${err.message}) — retrying in ${backoff}ms`);
+        await sleep(backoff);
+      }
+    }
+  }
+  throw lastErr;
+}
+
+// Medium appends an RSS tracking suffix (?source=rss-…) to every link.
+function cleanPostUrl(link) {
+  try {
+    const u = new URL(link);
+    u.search = '';
+    u.hash = '';
+    return u.toString();
+  } catch {
+    return link;
+  }
 }
 
 // Pre-render the footer that footer.js builds at runtime, so dist/ needs no
@@ -496,29 +539,41 @@ function buildRedirects(blog) {
   const username = data.meta.medium_username || 'aswinpradeepc';
   let blogHTML = '';
 
+  let posts;
   try {
     const feedUrl = encodeURIComponent(`https://medium.com/feed/@${username}`);
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${feedUrl}`;
-    const response = await fetch(apiUrl);
-    const json = JSON.parse(response);
+    const json = JSON.parse(await fetchWithRetry(apiUrl));
 
-    if (json.status === 'ok' && json.items && json.items.length > 0) {
-      blogHTML = json.items.slice(0, 6).map(post => {
-        const date = new Date(post.pubDate).toLocaleDateString('en-GB', {
-          year: 'numeric', month: 'short', day: 'numeric'
-        });
-        return `
+    if (json.status !== 'ok') {
+      throw new Error(`feed returned status "${json.status}": ${json.message || 'no message'}`);
+    }
+    posts = json.items || [];
+  } catch (err) {
+    // Reaching here means the feed is genuinely unreachable, not just empty.
+    // Publishing the "nothing published yet" fallback over real posts would be
+    // worse than not deploying at all, so stop and leave the last build live.
+    console.error(`\n❌ Could not fetch Medium posts: ${err.message}`);
+    console.error('   Refusing to build a blog page that hides existing posts.');
+    process.exit(1);
+  }
+
+  if (posts.length > 0) {
+    blogHTML = posts.slice(0, 6).map(post => {
+      const date = new Date(post.pubDate).toLocaleDateString('en-GB', {
+        year: 'numeric', month: 'short', day: 'numeric'
+      });
+      return `
         <div class="blog-item fade-up">
-          <a class="blog-title" href="${post.link}" target="_blank" rel="noopener">${post.title}</a>
+          <a class="blog-title" href="${cleanPostUrl(post.link)}" target="_blank" rel="noopener">${post.title}</a>
           <div class="blog-date">${date}</div>
         </div>
       `;
-      }).join('');
-    } else {
-      throw new Error('No posts found');
-    }
-  } catch (err) {
-    console.log('⚠️  Could not fetch Medium posts, using fallback');
+    }).join('');
+    console.log(`   ✓ ${posts.length} post${posts.length === 1 ? '' : 's'} from Medium`);
+  } else {
+    // The feed answered and really is empty — the rickroll is the intended page.
+    console.log('   ℹ️  Feed is empty, using the placeholder');
     blogHTML = `
       <div class="rick-zone">
         <p>Nothing published yet. Probably drafting something profound.</p>
