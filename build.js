@@ -105,7 +105,7 @@ function bakeFooter(html, meta) {
       '<footer id="footer"></footer>',
       `<footer id="footer">${renderFooter(meta)}</footer>`
     )
-    .replace(/\s*<script src="footer\.js"><\/script>/, '');
+    .replace(/\s*<script src="\/?footer\.js"><\/script>/, '');
 }
 
 // Build the _redirects file: the hand-written rules, plus one short link per
@@ -175,7 +175,7 @@ function buildRedirects(blog) {
       <div class="now-block">
         <p>${now}</p>
         <figure class="profile-photo">
-          <img src="images/aswin-pradeep-c-profile-pic.jpg" alt="Aswin Pradeep C" width="148" height="148" loading="lazy" decoding="async" />
+          <img src="/images/aswin-pradeep-c-profile-pic.jpg" alt="Aswin Pradeep C" width="148" height="148" loading="lazy" decoding="async" />
           <figcaption>Aswin Pradeep C in 2026</figcaption>
         </figure>
       </div>

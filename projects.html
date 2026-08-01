@@ -29,8 +29,8 @@
   <meta name="twitter:image" content="https://aswinpradeepc.com/images/aswin-pradeep-c-profile-pic.jpg" />
   
   <meta name="theme-color" content="#000000" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/style.css" />
   
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -58,13 +58,13 @@
 
 <footer id="footer"></footer>
 
-<script src="nav.js"></script>
-<script src="footer.js"></script>
+<script src="/nav.js"></script>
+<script src="/footer.js"></script>
 <script>
 (async () => {
   let data;
   try {
-    const res = await fetch('./data.json');
+    const res = await fetch('/data.json');
     data = await res.json();
   } catch {
     document.getElementById('projects-content').innerHTML =
