@@ -54,6 +54,48 @@
   });
 
   inner.appendChild(ul);
+
+  // ── Theme toggle ──
+  // The head script has already stamped data-theme; this only flips it.
+  const THEME_KEY = 'theme';
+  const themeBtn = document.createElement('button');
+  themeBtn.type = 'button';
+  themeBtn.className = 'theme-toggle';
+  themeBtn.innerHTML = `
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.2"/>
+      <path d="M12 1.8v2.2M12 20v2.2M4.4 4.4l1.6 1.6M18 18l1.6 1.6M1.8 12h2.2M20 12h2.2M4.4 19.6l1.6-1.6M18 6l1.6-1.6"/>
+    </svg>
+  `;
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+    // Read the colour back out of the cascade rather than repeating a hex here,
+    // so style.css stays the only place the palette is written down.
+    const meta = document.querySelector('meta[name="theme-color"]');
+    const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+    if (meta && bg) meta.setAttribute('content', bg);
+    const label = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+    themeBtn.setAttribute('aria-label', label);
+    themeBtn.setAttribute('title', label);
+  }
+
+  // Light unless the head script found a stored dark choice — the OS setting is
+  // deliberately not consulted.
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+
+  themeBtn.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem(THEME_KEY, next); } catch {}
+    applyTheme(next);
+  });
+
+  inner.appendChild(themeBtn);
   nav.appendChild(inner);
 
   // ── Swipe Navigation (Mobile) ──

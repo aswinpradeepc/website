@@ -7,17 +7,42 @@
 }
 
 :root {
+  --font:      'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono:      'DM Mono', 'SF Mono', 'Fira Code', monospace;
+  --max:       700px;
+  --nav-h:     56px;
+  --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── THEME: light ──
+   Light is the unconditional default: the OS preference is deliberately not
+   consulted, so the site looks the same to everyone until they pick dark
+   themselves. Dark is opt-in via the nav toggle, which stamps data-theme. */
+:root {
+  color-scheme: light;
   --ink:       #0f0f0f;
   --ink-2:     #333333;
   --muted:     #777777;
   --faint:     #e9e9e9;
   --faintest:  #f4f4f4;
   --bg:        #ffffff;
-  --font:      'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono:      'DM Mono', 'SF Mono', 'Fira Code', monospace;
-  --max:       700px;
-  --nav-h:     56px;
-  --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+  --shimmer:   #efefef;
+  --nav-bg:    rgba(255,255,255,0.92);
+  --nav-bg-0:  rgba(255,255,255,0);
+}
+
+/* ── THEME: dark (opt-in) ── */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink:       #f2f2f0;
+  --ink-2:     #c3c3c0;
+  --muted:     #8a8a86;
+  --faint:     #2a2a2c;
+  --faintest:  #191919;
+  --bg:        #0e0e0f;
+  --shimmer:   #232326;
+  --nav-bg:    rgba(14,14,15,0.92);
+  --nav-bg-0:  rgba(14,14,15,0);
 }
 
 html {
@@ -35,6 +60,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none; }
 }
 
 /* ── NAV ── */
@@ -42,7 +72,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255,255,255,0.92);
+  background: var(--nav-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--faint);
@@ -52,6 +82,7 @@ body {
 }
 
 .nav-inner {
+  position: relative;
   max-width: var(--max);
   width: 100%;
   margin: 0 auto;
@@ -78,6 +109,7 @@ body {
   align-items: center;
   gap: 0;
   list-style: none;
+  margin-left: auto; /* keeps links + toggle grouped at the right */
 }
 
 .nav-links a {
@@ -93,6 +125,44 @@ body {
 
 .nav-links a:hover { color: var(--ink); }
 .nav-links a.active { color: var(--ink); font-weight: 500; }
+
+/* ── THEME TOGGLE ── */
+.theme-toggle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 3px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  margin-right: -0.5rem; /* optically align the icon with the nav edge */
+}
+
+.theme-toggle:hover { color: var(--ink); background: var(--faintest); }
+.theme-toggle:active { color: var(--ink); }
+
+.theme-toggle:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.theme-toggle svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+/* Show the icon of the theme you would switch TO */
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 /* ── MAIN ── */
 main {
@@ -223,7 +293,7 @@ a.subtle:hover {
 
 /* ── SKELETON ── */
 .skeleton {
-  background: linear-gradient(90deg, var(--faint) 25%, #efefef 50%, var(--faint) 75%);
+  background: linear-gradient(90deg, var(--faint) 25%, var(--shimmer) 50%, var(--faint) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
   border-radius: 2px;
@@ -844,17 +914,21 @@ a.subtle:hover {
   .nav-inner {
     padding: 0;
     justify-content: flex-start;
+    gap: 0;
   }
 
+  /* The links take the space left over by the toggle rail, and scroll inside
+     it — so the toggle stays put instead of scrolling out of reach. */
   .nav-links {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE/Edge */
     gap: 0;
-    padding: 0 1rem;
+    padding: 0 0.5rem 0 1rem;
   }
 
   .nav-links::-webkit-scrollbar {
@@ -866,15 +940,26 @@ a.subtle:hover {
     font-size: 0.85rem;
   }
 
-  /* Add swipe indicator */
-  #nav::after {
+  /* Fixed-width rail at the right edge, full nav height for a fat touch target */
+  .theme-toggle {
+    width: 44px;
+    height: var(--nav-h);
+    border-radius: 0;
+    border-left: 1px solid var(--faint);
+    margin-right: 0;
+  }
+
+  .theme-toggle:hover { background: none; }
+
+  /* Swipe indicator — sits just left of the toggle rail */
+  .nav-inner::after {
     content: '';
     position: absolute;
-    right: 0;
+    right: 44px;
     top: 0;
     bottom: 0;
-    width: 30px;
-    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.92));
+    width: 26px;
+    background: linear-gradient(90deg, var(--nav-bg-0), var(--nav-bg));
     pointer-events: none;
   }
 

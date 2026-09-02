@@ -28,9 +28,23 @@
   <meta name="twitter:description" content="Projects and open source contributions by Aswin Pradeep C." />
   <meta name="twitter:image" content="https://aswinpradeepc.com/images/aswin-pradeep-c-profile-pic.jpg" />
   
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="/style.css" />
+  <!-- Light is the default; only a stored dark choice changes anything, and it
+       must land before first paint. --bg is read from the stylesheet above so
+       the palette stays defined in exactly one place. -->
+  <script>
+    (function () {
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'dark') return;
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var m = document.querySelector('meta[name="theme-color"]');
+      var bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+      if (m && bg) m.setAttribute('content', bg);
+    })();
+  </script>
   
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">

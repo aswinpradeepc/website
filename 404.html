@@ -3,7 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Page Not Found</title>  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />  <link rel="stylesheet" href="/style.css">
+  <title>404 - Page Not Found</title>  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href="/style.css">
+  <!-- Light is the default; only a stored dark choice changes anything, and it
+       must land before first paint. --bg is read from the stylesheet above so
+       the palette stays defined in exactly one place. -->
+  <script>
+    (function () {
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'dark') return;
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var m = document.querySelector('meta[name="theme-color"]');
+      var bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+      if (m && bg) m.setAttribute('content', bg);
+    })();
+  </script>
 </head>
 <body>
 
