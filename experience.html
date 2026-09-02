@@ -86,10 +86,18 @@
     return;
   }
 
-  const { experience, skills, education } = data;
+  const { experience, skills, education, sideQuests } = data;
   const container = document.getElementById('experience-content');
 
   // ── Experience ──
+  const questItems = sideQuests.map(q => `
+      <div class="edu-block">
+        <div class="edu-inst"><a href="${q.link}" target="_blank" rel="noopener">${q.name}</a></div>
+        <div class="edu-degree">${q.detail}</div>
+        ${q.meta ? `<div class="edu-meta">${q.meta}</div>` : ''}
+      </div>
+  `).join('');
+
   const timelineItems = experience.map((w, i) => {
     const isOpen = i === 0; // most recent = open dot
     const bullets = w.bullets.map(b => `<li>${b}</li>`).join('');
@@ -141,6 +149,13 @@
         <div class="edu-degree">${education.degree}</div>
         <div class="edu-meta">${education.period} · ${education.grade}</div>
       </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="fade-up">
+      <span class="section-label">Curious Side Quests</span>
+      ${questItems}
     </section>
 
     <hr class="divider">

@@ -909,11 +909,27 @@ a.subtle:hover {
   margin-top: 0.5rem;
 }
 
+/* Side-quest entries stack, so they need breathing room between cards */
+.edu-block + .edu-block {
+  margin-top: 0.75rem;
+}
+
 .edu-inst {
   font-weight: 600;
   font-size: 0.95rem;
   margin-bottom: 0.2rem;
 }
+
+/* Linked titles keep the heading weight — same treatment as contact rows */
+.edu-inst a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--faint);
+  padding-bottom: 1px;
+  transition: border-color 0.15s;
+}
+
+.edu-inst a:hover { border-color: var(--ink); }
 
 .edu-degree {
   font-size: 0.85rem;

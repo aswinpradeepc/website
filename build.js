@@ -198,7 +198,15 @@ function buildRedirects(blog) {
   console.log('📄 Building experience.html...');
   let expHtml = fs.readFileSync('./experience.html', 'utf8');
 
-  const { experience, skills, education } = data;
+  const { experience, skills, education, sideQuests } = data;
+
+  const questItems = sideQuests.map(q => `
+      <div class="edu-block">
+        <div class="edu-inst"><a href="${q.link}" target="_blank" rel="noopener">${q.name}</a></div>
+        <div class="edu-degree">${q.detail}</div>
+        ${q.meta ? `<div class="edu-meta">${q.meta}</div>` : ''}
+      </div>
+  `).join('');
 
   const timelineItems = experience.map((w, i) => {
     const isOpen = i === 0;
@@ -250,6 +258,13 @@ function buildRedirects(blog) {
         <div class="edu-degree">${education.degree}</div>
         <div class="edu-meta">${education.period} · ${education.grade}</div>
       </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="fade-up">
+      <span class="section-label">Curious Side Quests</span>
+      ${questItems}
     </section>
 
     <hr class="divider">
