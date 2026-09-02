@@ -113,13 +113,19 @@
         `;
       }
 
+      // Optional, like image and link — without this a missing subtitle
+      // renders the literal string "undefined".
+      const subtitleHtml = e.subtitle
+        ? `<div class="event-subtitle">${e.subtitle}</div>`
+        : '';
+
       return `
         <div class="event-item fade-up">
           <div class="event-header">
             <span class="event-title">${e.title}</span>
             <span class="event-date">${e.date}</span>
           </div>
-          <div class="event-subtitle">${e.subtitle}</div>
+          ${subtitleHtml}
           <p class="event-desc">${e.description}</p>
           <div class="tags">${tags}</div>
           ${imageHtml}

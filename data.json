@@ -261,6 +261,18 @@
   "activities": {
     "community": [
       {
+        "title": "Cloud Native Summit Kerala 2026",
+        "date": "2026",
+        "description": "Had a fun day with the community, interacting with the open-source maintainers keeping the cloud up.",
+        "tags": [
+          "Cloud",
+          "Linux",
+          "Open Source"
+        ],
+        "image": "/images/activities/aswinpradeepc-cloud-native-summit-2026.jpeg",
+        "alt": "Aswin Pradeep C at Cloud Native Summit Kerala 2026, with attendees and open source maintainers at the venue"
+      },
+      {
         "title": "IndiaFOSS 2025",
         "subtitle": "Representing devb.io",
         "date": "2025",
