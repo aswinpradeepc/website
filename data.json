@@ -349,5 +349,27 @@
         "alt": "Aswin Pradeep C winning First Prize at Summer Startup Festival 2023 Project Expo competition GEC Thrissur"
       }
     ]
-  }
+  },
+  "worthYourTime": [
+    {
+      "name": "The Linux Command Line",
+      "link": "https://linuxcommand.org/tlcl.php",
+      "note": "book &middot; free and copyleft"
+    },
+    {
+      "name": "cpu.land",
+      "link": "https://cpu.land",
+      "note": "what actually happens when you run a program"
+    },
+    {
+      "name": "Revolution OS",
+      "link": "https://youtu.be/k0RYQVkQmWU",
+      "note": "documentary &middot; GNU, Linux and the free software movement"
+    },
+    {
+      "name": "The Internet&rsquo;s Own Boy",
+      "link": "https://youtu.be/9vz06QO3UkQ",
+      "note": "documentary &middot; the story of Aaron Swartz"
+    }
+  ]
 }

@@ -447,9 +447,12 @@ function buildRedirects(blog) {
   const achievementItems = renderItems(activities.achievements);
 
   const actContent = `
-    <div class="fade-up">
-      <span class="page-label">Aswin Pradeep C</span>
-      <h1 class="page-title">Activities</h1>
+    <div class="page-head fade-up">
+      <div>
+        <span class="page-label">Aswin Pradeep C</span>
+        <h1 class="page-title">Activities</h1>
+      </div>
+      <a class="worth-link" href="/worth-your-time">some stuff worth your time &#8594;</a>
     </div>
 
     <section>
@@ -536,6 +539,49 @@ function buildRedirects(blog) {
   // ═══════════════════════════════════════════════════════════
   // 6. BLOG (Fetch Medium RSS)
   // ═══════════════════════════════════════════════════════════
+
+  // ═══════════════════════════════════════════════════════════
+  // 5b. WORTH YOUR TIME (unlisted — linked only from Activities)
+  // ═══════════════════════════════════════════════════════════
+
+  console.log('📄 Building worth-your-time.html...');
+  let worthHtml = fs.readFileSync('./worth-your-time.html', 'utf8');
+
+  const { worthYourTime } = data;
+
+  const worthItems = worthYourTime.map(w => {
+    const title = w.link
+      ? `<a class="blog-title" href="${w.link}" target="_blank" rel="noopener">${w.name} &#8599;</a>`
+      : `<span class="blog-title">${w.name}</span>`;
+    return `
+        <div class="blog-item fade-up">
+          ${title}
+          <div class="blog-date">${w.note}</div>
+        </div>`;
+  }).join('');
+
+  const worthContent = `
+    <div class="fade-up">
+      <span class="page-label">Aswin Pradeep C</span>
+      <h1 class="page-title">Worth Your Time</h1>
+    </div>
+
+    <section class="fade-up">
+      ${worthItems}
+    </section>
+  `;
+
+  worthHtml = worthHtml.replace(
+    '<div id="worth-content"></div>',
+    `<div id="worth-content">${worthContent}</div>`
+  );
+
+  worthHtml = worthHtml.replace(
+    /<script>\s*\(async \(\) => \{[\s\S]*?\}\)\(\);\s*<\/script>\s*<\/body>/,
+    '</body>'
+  );
+
+  fs.writeFileSync(path.join(distDir, 'worth-your-time.html'), bakeFooter(worthHtml, meta));
 
   console.log('📄 Building blog.html...');
   let blogPageHtml = fs.readFileSync('./blog.html', 'utf8');

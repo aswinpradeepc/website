@@ -192,6 +192,39 @@ main {
   margin-bottom: 2.5rem;
 }
 
+/* ── PAGE HEAD (title + trailing action) ── */
+/* Carries the title's bottom margin so a wrapped action link on a narrow
+   screen sits under the title rather than 2.5rem below it. */
+.page-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.page-head .page-title {
+  margin-bottom: 0;
+}
+
+.worth-link {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--faint);
+  padding-bottom: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.worth-link:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
 /* ── SECTION ── */
 section {
   margin-bottom: 3.5rem;

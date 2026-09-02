@@ -5,6 +5,7 @@
 /activities.html    /activities 301
 /blog.html          /blog       301
 /contact.html       /contact    301
+/worth-your-time.html /worth-your-time 301
 
 # Old /writing section — renamed to /blog (keep old links alive)
 /writing            /blog       301

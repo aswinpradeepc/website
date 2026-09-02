@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Worth Your Time — Aswin Pradeep C</title>
+  <meta name="description" content="A few things worth your time — books, sites and documentaries." />
+  <meta name="author" content="Aswin Pradeep C" />
+  <!-- Reachable only from the Activities page, on purpose — keep it out of search. -->
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/style.css" />
+  <!-- Light is the default; only a stored dark choice changes anything, and it
+       must land before first paint. --bg is read from the stylesheet above so
+       the palette stays defined in exactly one place. -->
+  <script>
+    (function () {
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'dark') return;
+      document.documentElement.setAttribute('data-theme', 'dark');
+      var m = document.querySelector('meta[name="theme-color"]');
+      var bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+      if (m && bg) m.setAttribute('content', bg);
+    })();
+  </script>
+</head>
+<body>
+
+<nav id="nav"></nav>
+
+<main>
+  <div id="worth-content"></div>
+</main>
+
+<footer id="footer"></footer>
+
+<script src="/nav.js"></script>
+<script src="/footer.js"></script>
+<script>
+(async () => {
+  let data;
+  try {
+    const res = await fetch('/data.json');
+    data = await res.json();
+  } catch {
+    document.getElementById('worth-content').innerHTML =
+      '<p style="color:var(--muted);font-size:.9rem">Failed to load content.</p>';
+    return;
+  }
+
+  const { worthYourTime } = data;
+  const container = document.getElementById('worth-content');
+
+  const items = worthYourTime.map(w => {
+    const title = w.link
+      ? `<a class="blog-title" href="${w.link}" target="_blank" rel="noopener">${w.name} &#8599;</a>`
+      : `<span class="blog-title">${w.name}</span>`;
+    return `
+        <div class="blog-item fade-up">
+          ${title}
+          <div class="blog-date">${w.note}</div>
+        </div>`;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="fade-up">
+      <span class="page-label">Aswin Pradeep C</span>
+      <h1 class="page-title">Worth Your Time</h1>
+    </div>
+
+    <section class="fade-up">
+      ${items}
+    </section>
+  `;
+})();
+</script>
+</body>
+</html>
