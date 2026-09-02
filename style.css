@@ -843,18 +843,24 @@ a.subtle:hover {
    block) — the photo greets you before the text. On wider screens row-reverse
    puts the photo back on the right as an infobox, keeping the prose on the
    page's left spine. */
-.now-block {
+/* Renamed from .now-block — the "Now" section it was built for is gone; this
+   is now just the intro: photo alongside the opening paragraphs. */
+.intro-block {
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-start;
   gap: 2rem;
 }
 
-.now-block p {
-  font-size: 0.95rem;
-  color: var(--ink-2);
-  max-width: 540px;
+/* The prose beside the photo reuses .about-block so paragraph styling stays in
+   one place; this only gives it the remaining width. */
+.intro-block .about-block {
   flex: 1;
+}
+
+/* Paragraphs continuing below the photo keep the same rhythm as p + p */
+.intro-block + .about-block {
+  margin-top: 0.9rem;
 }
 
 /* ── PROFILE PHOTO (wiki-infobox style) ── */
@@ -996,7 +1002,7 @@ a.subtle:hover {
   }
 
   /* Keep the photo alongside the Now text on tablets, just a touch smaller */
-  .now-block {
+  .intro-block {
     gap: 1.5rem;
   }
 
@@ -1023,13 +1029,13 @@ a.subtle:hover {
 
 /* ── PHONES ONLY: stack, photo above the Now text, centred ── */
 @media (max-width: 600px) {
-  .now-block {
+  .intro-block {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
   }
 
-  .now-block p {
+  .intro-block .about-block {
     align-self: stretch;
   }
 
@@ -1079,7 +1085,7 @@ a.subtle:hover {
   /* Improve readability */
   .timeline-bullets li { font-size: 0.88rem; }
   .project-desc, .event-desc, .oss-desc { font-size: 0.88rem; }
-  .about-block p, .now-block p { font-size: 0.92rem; }
+  .about-block p { font-size: 0.92rem; }
   
   /* Better contact page */
   .contact-email { font-size: 1.05rem; }

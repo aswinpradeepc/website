@@ -155,7 +155,7 @@ function buildRedirects(blog) {
   console.log('📄 Building index.html...');
   let indexHtml = fs.readFileSync('./index.html', 'utf8');
   
-  const { meta, now, about } = data;
+  const { meta, about } = data;
   const indexContent = `
     <div class="fade-up">
       <h1 class="home-name">${meta.name}</h1>
@@ -163,19 +163,17 @@ function buildRedirects(blog) {
     </div>
 
     <section class="fade-up">
-      <div class="now-block">
+      <div class="intro-block">
         <figure class="profile-photo">
           <img src="/images/aswin-pradeep-c-profile-pic.jpg" alt="Aswin Pradeep C" width="148" height="148" loading="lazy" decoding="async" />
           <figcaption>Aswin Pradeep C in 2026</figcaption>
         </figure>
-        <p>${now}</p>
+        <div class="about-block">
+          ${about.slice(0, 2).map(p => `<p>${p}</p>`).join('')}
+        </div>
       </div>
-    </section>
-
-    <section class="fade-up">
-      <span class="section-label">About</span>
       <div class="about-block">
-        ${about.map(p => `<p>${p}</p>`).join('')}
+        ${about.slice(2).map(p => `<p>${p}</p>`).join('')}
       </div>
     </section>
   `;
