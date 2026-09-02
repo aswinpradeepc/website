@@ -613,7 +613,7 @@ function buildRedirects(blog) {
     'humans.txt',
     'sitemap.xml',
     '_headers',
-    'aswinpradeepc.pdf'
+    'AswinPradeep_BackendEngineer.pdf'
   ];
 
   staticFiles.forEach(file => {
