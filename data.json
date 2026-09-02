@@ -374,6 +374,11 @@
       "note": "what actually happens when you run a program"
     },
     {
+      "name": "roadmap.sh",
+      "link": "https://roadmap.sh",
+      "note": "community-built learning paths for developers"
+    },
+    {
       "name": "Revolution OS",
       "link": "https://youtu.be/k0RYQVkQmWU",
       "note": "documentary &middot; GNU, Linux and the free software movement"
