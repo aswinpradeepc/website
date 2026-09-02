@@ -306,6 +306,33 @@ a.subtle:hover {
   100% { background-position: -200% 0; }
 }
 
+/* ── PREV / NEXT PAGE LINKS ── */
+/* Injected at the end of <main> by nav.js, so it inherits main's width and
+   gutters. Mirrors the swipe order, which is what makes the gesture findable —
+   so it only shows where swiping applies. Hidden here (desktop), switched on in
+   the 768px block, matching how the rest of this file is organised. */
+.page-nav {
+  display: none;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--faint);
+}
+
+.page-nav a {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.page-nav a:hover { color: var(--ink); }
+
+/* On the first page there is no prev link, so keep next pinned right */
+.page-nav-next { margin-left: auto; }
+
 /* ── FOOTER ── */
 #footer {
   border-top: 1px solid var(--faint);
@@ -800,34 +827,25 @@ a.subtle:hover {
   margin-bottom: 0.5rem;
 }
 
+/* The tagline is the hero line of the home page — larger and in body ink
+   rather than muted, so it carries the page instead of trailing the name. */
 .home-tagline {
-  font-size: 1rem;
-  color: var(--muted);
-  margin-bottom: 2rem;
+  font-size: 1.35rem;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--ink-2);
   font-weight: 300;
-}
-
-.home-nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0;
+  max-width: 560px;
   margin-bottom: 3.5rem;
 }
 
-.home-nav-links a {
-  font-size: 0.85rem;
-  color: var(--ink);
-  text-decoration: none;
-  margin-right: 1.5rem;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 1px;
-  transition: opacity 0.15s;
-}
-
-.home-nav-links a:hover { opacity: 0.4; }
-
+/* DOM order is photo-then-prose, which is what phones stack (see the 600px
+   block) — the photo greets you before the text. On wider screens row-reverse
+   puts the photo back on the right as an infobox, keeping the prose on the
+   page's left spine. */
 .now-block {
   display: flex;
+  flex-direction: row-reverse;
   align-items: flex-start;
   gap: 2rem;
 }
@@ -963,6 +981,11 @@ a.subtle:hover {
     pointer-events: none;
   }
 
+  /* Prev/next only earns its space where the swipe gesture exists */
+  .page-nav {
+    display: flex;
+  }
+
   /* Make footer more compact */
   .footer-links {
     gap: 1rem;
@@ -970,12 +993,6 @@ a.subtle:hover {
 
   .footer-links a {
     font-size: 0.78rem;
-  }
-
-  /* Improve touch targets */
-  .home-nav-links a {
-    padding: 0.25rem 0;
-    font-size: 0.88rem;
   }
 
   /* Keep the photo alongside the Now text on tablets, just a touch smaller */
@@ -1004,7 +1021,7 @@ a.subtle:hover {
   }
 }
 
-/* ── PHONES ONLY: stack the profile photo below the Now text, centred ── */
+/* ── PHONES ONLY: stack, photo above the Now text, centred ── */
 @media (max-width: 600px) {
   .now-block {
     flex-direction: column;
@@ -1016,14 +1033,33 @@ a.subtle:hover {
     align-self: stretch;
   }
 
+  /* Drop the wiki-infobox framing for an avatar: round, no caption, no inset
+     ring. Square (image + 2px border both ways) means 50% is a true circle
+     rather than an ellipse. The figure clips, so the image can be scaled up to
+     crop in on the face — isolation keeps Safari clipping the transformed
+     child correctly. */
   .profile-photo {
-    --photo-size: 128px;
+    --photo-size: 162px;
+    width: calc(var(--photo-size) + 2px);
+    padding: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .profile-photo img {
+    transform: scale(1.2);
+  }
+
+  .profile-photo figcaption {
+    display: none;
   }
 }
 
 @media (max-width: 520px) {
   main { padding: 2.5rem 1.25rem 4rem; }
   .home-name { font-size: 1.6rem; }
+  .home-tagline { font-size: 1.15rem; margin-bottom: 2.5rem; }
   .page-title { font-size: 1.5rem; }
   .nav-links a { padding: 0.35rem 0.6rem; font-size: 0.8rem; }
   .timeline-header { flex-direction: column; gap: 0; }

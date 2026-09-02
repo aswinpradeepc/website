@@ -1,12 +1,13 @@
 // nav.js — inject shared navigation
 (function () {
+  // Order here drives both the nav bar and the mobile swipe sequence.
   const pages = [
-    { href: '/',    label: 'Home'     },
-    { href: '/experience',     label: 'Experience'     },
-    { href: '/projects', label: 'Projects' },
-    { href: '/activities',   label: 'Activities'   },
-    { href: '/blog',  label: 'Blog'  },
-    { href: '/contact',  label: 'Contact'  },
+    { href: '/',           label: 'Home'       },
+    { href: '/blog',       label: 'Blog'       },
+    { href: '/experience', label: 'Experience' },
+    { href: '/projects',   label: 'Projects'   },
+    { href: '/activities', label: 'Activities' },
+    { href: '/contact',    label: 'Contact'    },
   ];
 
   // Detect active page - normalize to remove .html extension
@@ -97,6 +98,45 @@
 
   inner.appendChild(themeBtn);
   nav.appendChild(inner);
+
+  nav.setAttribute('aria-label', 'Site');
+
+  // ── Prev / next links at the foot of the page ──
+  // Built from the same `pages` array as the swipe gesture below, so the two
+  // always agree — and the links double as the visible hint that swiping works.
+  const pageIndex = pages.findIndex(p => p.href === current);
+
+  if (pageIndex !== -1) {
+    const main = document.querySelector('main');
+    if (main) {
+      const prev = pages[pageIndex - 1];
+      const next = pages[pageIndex + 1];
+
+      const pageNav = document.createElement('nav');
+      pageNav.className = 'page-nav';
+      pageNav.setAttribute('aria-label', 'Previous and next page');
+
+      if (prev) {
+        const a = document.createElement('a');
+        a.className = 'page-nav-prev';
+        a.href = prev.href;
+        a.rel = 'prev';
+        a.textContent = `\u2190 ${prev.label}`;
+        pageNav.appendChild(a);
+      }
+
+      if (next) {
+        const a = document.createElement('a');
+        a.className = 'page-nav-next';
+        a.href = next.href;
+        a.rel = 'next';
+        a.textContent = `${next.label} \u2192`;
+        pageNav.appendChild(a);
+      }
+
+      if (pageNav.childElementCount) main.appendChild(pageNav);
+    }
+  }
 
   // ── Swipe Navigation (Mobile) ──
   let touchStartX = 0;

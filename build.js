@@ -160,24 +160,15 @@ function buildRedirects(blog) {
     <div class="fade-up">
       <h1 class="home-name">${meta.name}</h1>
       <p class="home-tagline">${meta.tagline}</p>
-      <div class="home-nav-links">
-        <a href="mailto:${meta.email}">${meta.email}</a>
-        <a href="${meta.links.github}" target="_blank" rel="noopener">GitHub</a>
-        <a href="${meta.links.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="${meta.links.medium}" target="_blank" rel="noopener">Medium</a>
-        <a href="${meta.links.x}" target="_blank" rel="noopener">X</a>
-        <a href="${meta.links.devbio}" target="_blank" rel="noopener">devb.io</a>
-      </div>
     </div>
 
     <section class="fade-up">
-      <span class="section-label">Now</span>
       <div class="now-block">
-        <p>${now}</p>
         <figure class="profile-photo">
           <img src="/images/aswin-pradeep-c-profile-pic.jpg" alt="Aswin Pradeep C" width="148" height="148" loading="lazy" decoding="async" />
           <figcaption>Aswin Pradeep C in 2026</figcaption>
         </figure>
+        <p>${now}</p>
       </div>
     </section>
 
