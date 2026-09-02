@@ -1048,7 +1048,10 @@ a.subtle:hover {
   }
 
   .profile-photo img {
-    transform: scale(1.2);
+    /* Shift the crop up so the shoulders clear the bottom of the circle.
+       Order matters: translate sits left of scale so the 10px is 10 real
+       screen pixels, not 10 pre-scale units (which would land as 12px). */
+    transform: translateY(-10px) scale(1.2);
   }
 
   .profile-photo figcaption {
