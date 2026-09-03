@@ -501,7 +501,7 @@ function buildRedirects(blog) {
 
     <section class="fade-up">
       <div class="contact-block">
-        <p>Questions, opportunities, collaborations, or just want to say hi — email is the best way to reach me.</p>
+        <p>Questions, opportunities, collaborations, or if you just want to say hi — email is the best way to reach me.</p>
         <a class="contact-email" href="mailto:${meta.email}">${meta.email}</a>
       </div>
 
