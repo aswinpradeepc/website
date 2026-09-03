@@ -21,6 +21,10 @@
     {
       "slug": "api-latency",
       "url": "https://medium.com/@aswinpradeepc/how-we-took-a-cpu-heavy-api-from-9-seconds-to-under-2-1734b4203ebe"
+    },
+    {
+      "slug": "ente-backup",
+      "url": "https://medium.com/writeabyte/how-i-verify-my-ente-photos-backups-without-copying-230-gb-563874d671b9"
     }
   ],
   "about": [
