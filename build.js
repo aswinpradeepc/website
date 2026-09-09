@@ -649,7 +649,111 @@ function buildRedirects(blog) {
     '</body>'
   );
 
+  // ── Per-post structured data ──
+  // The posts live on Medium, whose robots.txt blocks every major AI crawler
+  // (ClaudeBot, GPTBot, Amazonbot, Applebot-Extended, meta-externalagent …), so
+  // nothing written there is reachable by an AI index. This block is the only
+  // description of them served from a domain that allows crawlers. Each
+  // BlogPosting points at the Medium URL as its canonical location — the short
+  // links under /blog/<slug> stay plain redirects.
+  const SITE = 'https://aswinpradeepc.com';
+  const authorNode = {
+    '@type': 'Person',
+    '@id': SITE + '#person',
+    name: meta.name,
+    url: SITE,
+    jobTitle: 'Backend Engineer',
+    sameAs: [meta.links.github, meta.links.linkedin, meta.links.x, meta.links.medium]
+  };
+
+  const described = (data.blog || []).filter(p => p.summary);
+
+  const blogJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${SITE}/blog#blog`,
+    name: `${meta.name} — Blog`,
+    url: `${SITE}/blog`,
+    inLanguage: 'en',
+    author: authorNode,
+    publisher: authorNode,
+    blogPost: [...described]
+      .sort((x, y) => y.date.localeCompare(x.date))
+      .map(p => ({
+        '@type': 'BlogPosting',
+        headline: p.title,
+        name: p.title,
+        description: p.description,
+        // The summary a crawler reads instead of the Medium body it can't fetch.
+        abstract: p.summary,
+        url: p.url,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': p.url },
+        datePublished: p.date,
+        inLanguage: 'en',
+        timeRequired: p.readingTime,
+        keywords: (p.tags || []).join(', '),
+        about: (p.tags || []).map(t => ({ '@type': 'Thing', name: t })),
+        author: { '@id': SITE + '#person' }
+      }))
+  };
+
+  // The marker comment carries its own explanation and is matched whole, so
+  // the build note never reaches the shipped page.
+  const marker = /<!-- BLOG_JSONLD[\s\S]*?-->/;
+  if (!marker.test(blogPageHtml)) {
+    console.error('\n❌ blog.html is missing the BLOG_JSONLD marker.');
+    console.error('   Refusing to ship a blog page with no structured data.');
+    process.exit(1);
+  }
+  blogPageHtml = blogPageHtml.replace(
+    marker,
+    `<script type="application/ld+json">\n${JSON.stringify(blogJsonLd, null, 2)}\n  </script>`
+  );
+  console.log(`   ✓ structured data for ${described.length} post${described.length === 1 ? '' : 's'}`);
+
   fs.writeFileSync(path.join(distDir, 'blog.html'), bakeFooter(blogPageHtml, meta));
+
+  // ── llms.txt ──
+  // Plain-text site map for language models: an emerging convention, and the
+  // one place the post summaries are served as prose rather than as markup.
+  const plain = s => String(s).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+
+  const llms = `# ${meta.name}
+
+> ${plain(meta.tagline)} Backend engineer in ${meta.location}, working in Python (Django, FastAPI) with Postgres and Redis, alongside LLM systems and self-hosting.
+
+${(data.about || []).map(plain).join('\n\n')}
+
+## Writing
+
+Posts are published on Medium; the summaries below are written for this file.
+
+${[...described].sort((x, y) => y.date.localeCompare(x.date)).map(p => `### ${p.title}
+Published ${p.date}${p.publication ? ` in ${p.publication}` : ''} · ${p.url}
+Topics: ${(p.tags || []).join(', ')}
+
+${p.summary}
+
+Takeaways:
+${(p.takeaways || []).map(t => `- ${plain(t)}`).join('\n')}`).join('\n\n')}
+
+## Pages
+- Home: ${SITE}/
+- Blog: ${SITE}/blog
+- Experience: ${SITE}/experience
+- Projects: ${SITE}/projects
+- Activities: ${SITE}/activities
+- Worth your time: ${SITE}/worth-your-time
+- Contact: ${SITE}/contact
+- Résumé (PDF): ${SITE}/cv
+
+## Contact
+- Email: ${meta.email}
+- GitHub: ${meta.links.github}
+- LinkedIn: ${meta.links.linkedin}
+`;
+  fs.writeFileSync(path.join(distDir, 'llms.txt'), llms);
+  console.log('   ✓ llms.txt');
 
   // ═══════════════════════════════════════════════════════════
   // 7. Copy Static Assets

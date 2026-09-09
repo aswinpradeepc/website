@@ -16,15 +16,86 @@
   "blog": [
     {
       "slug": "picnix",
-      "url": "https://medium.com/@aswinpradeepc/why-rule-based-trip-planners-fail-and-what-i-built-with-langgraph-instead-c9ca78284cb5"
+      "url": "https://medium.com/writeabyte/why-rule-based-trip-planners-fail-and-what-i-built-with-langgraph-instead-c9ca78284cb5",
+      "title": "Why rule-based trip planners fail (and what I built with LangGraph instead)",
+      "date": "2026-07-15",
+      "readingTime": "PT4M",
+      "publication": "writeabyte",
+      "description": "Weighted ranking and constraint solvers both failed at trip planning. Why I rebuilt Picnix as an 8-node LangGraph state machine, and what tracing taught me.",
+      "tags": [
+        "LangGraph",
+        "AI Agents",
+        "LLM",
+        "State Machines",
+        "Python",
+        "Observability"
+      ],
+      "summary": "Google Maps says Idukki Dam closes at 6pm; entry actually stops at 5. ChatGPT sent a friend to Anamudi Peak, which has never been open to the public. Trip planning fails at validation, not at ideas. A weighted ranking algorithm was the first attempt and died on context — a weight can't reason, so a waterfall scores the same in monsoon and in drought. Reframing it as a constraint satisfaction problem failed differently: bike-friendliness, holiday crowd risk and \"vibe\" don't reduce to clean constraints. What worked was modelling the planning process itself as a state machine with an LLM call at each node — LangGraph, eight nodes, behind a Streamlit UI. Arize Phoenix tracing exposed what the logs had hidden. The graph's rigidity is what taught me the difference between a workflow and an agent.",
+      "takeaways": [
+        "Weighted scoring can't encode context &mdash; the same weight is wrong in different conditions.",
+        "Constraint solvers need closed constraints; real-world travel constraints are open-ended and dynamic.",
+        "LangGraph fits when you need a finite state machine with LLM reasoning at each node.",
+        "Design your states before you touch code.",
+        "Never trust an LLM call you haven't traced &mdash; logs alone hide the failures.",
+        "A workflow generalises by becoming an agent, not by growing more branches."
+      ]
     },
     {
       "slug": "api-latency",
-      "url": "https://medium.com/@aswinpradeepc/how-we-took-a-cpu-heavy-api-from-9-seconds-to-under-2-1734b4203ebe"
+      "url": "https://blog.stackademic.com/how-we-took-a-cpu-heavy-api-from-9-seconds-to-under-2-1734b4203ebe",
+      "title": "How we took a CPU-heavy API from 9 seconds to under 2",
+      "date": "2026-07-22",
+      "readingTime": "PT5M",
+      "publication": "Stackademic",
+      "description": "Profiling before rewriting took a CPU-bound pricing API from 9s to under 2s: ProcessPoolExecutor past the GIL, asyncio.gather, connection pooling and Redis.",
+      "tags": [
+        "Python",
+        "FastAPI",
+        "Performance",
+        "Backend Development",
+        "Profiling",
+        "asyncio",
+        "Redis"
+      ],
+      "summary": "A CPU-bound pricing API took nine seconds to respond under Locust. The first decision was to fix nothing: profile, sort by cost, then act. A small timing decorator instrumented the hot functions without editing every signature. The numbers pointed at sequential CPU work, external calls tangled into the calculation, and repeated hits to the same microservices. Refactoring to clean architecture came first, which made every later fix a one-place edit. ProcessPoolExecutor got past CPython's GIL — threads give concurrency, not parallelism, for CPU-bound work — taking 9s to under 4. Then asyncio.gather turned a sum of call latencies into the duration of the slowest one, a single app-level httpx.AsyncClient skipped repeat TCP + TLS handshakes, and Redis caching cut close to another second. Now roughly 3s cold, under 2s warm.",
+      "takeaways": [
+        "Profile and sort by cost before you optimise &mdash; don't fix what you happen to notice.",
+        "A timing decorator beats editing every function signature to instrument it.",
+        "CPython's GIL means threads don't parallelise CPU-bound work; ProcessPoolExecutor does.",
+        "asyncio.gather turns a sum of call latencies into the latency of the slowest call.",
+        "One app-level httpx.AsyncClient reuses connections and skips repeat TCP + TLS handshakes.",
+        "Caching is easy; cache invalidation is the part that needs a documented strategy.",
+        "Refactoring to clean architecture first is what makes each later fix a single-place edit."
+      ]
     },
     {
       "slug": "ente-backup",
-      "url": "https://medium.com/writeabyte/how-i-verify-my-ente-photos-backups-without-copying-230-gb-563874d671b9"
+      "url": "https://medium.com/writeabyte/how-i-verify-my-ente-photos-backups-without-copying-230-gb-563874d671b9",
+      "title": "How I verify my Ente Photos backups without copying 230 GB",
+      "date": "2026-09-02",
+      "readingTime": "PT8M",
+      "publication": "writeabyte",
+      "description": "Hard-linked incremental backups for a self-hosted Ente Photos library, and an overlayfs trick that restore-tests 230 GB without copying a byte or corrupting it.",
+      "tags": [
+        "Self-Hosting",
+        "Homelab",
+        "Linux",
+        "Backup",
+        "overlayfs",
+        "Ente",
+        "systemd",
+        "MinIO"
+      ],
+      "summary": "A kernel panic about a dying disk — actually a loose SATA cable — was enough of a scare to properly back up a 230 GB self-hosted Ente Photos library. Incremental backups solve the volume; hard links solve state, because rsync --link-dest links to objects already present in the previous backup and simply doesn't link deleted ones. Expiring the oldest backup breaks nothing: a file is an inode, and an inode dies only when its last link does. A systemd timer with Persistent=true beats cron, catching up runs missed while the box was powered off. Verification is the interesting part — overlayfs mounts the backup as a read-only lower dir under a throwaway upper dir, so MinIO can read, write and delete against it without copying 230 GB or corrupting the original.",
+      "takeaways": [
+        "rsync --link-dest gives incremental backups that preserve state without re-copying data.",
+        "Hard links make retention safe: an inode dies only when its last link does, so expiring the oldest backup breaks nothing.",
+        "A systemd timer with Persistent=true beats cron &mdash; it catches up runs missed while the box was off.",
+        "An untested backup isn't a backup; the restore test has to be simple enough to run during an actual failure.",
+        "overlayfs restore-tests a backup in place &mdash; read-only lower dir, throwaway upper dir, no copy and no mutation.",
+        "RAID 1 mirrors corruption; versioned backups leave you a previous state to fall back to.",
+        "UUID-based fstab entries stop a reboot from reordering disks under a backup job."
+      ]
     }
   ],
   "about": [
