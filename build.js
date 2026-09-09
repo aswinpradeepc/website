@@ -615,14 +615,26 @@ function buildRedirects(blog) {
   }
 
   if (posts.length > 0) {
+    // Category and topics come from data.json, matched to the feed by URL.
+    // A post we hold no entry for still renders — just with title and date.
+    const entryByUrl = new Map((data.blog || []).map(p => [cleanPostUrl(p.url), p]));
+
     blogHTML = posts.slice(0, 6).map(post => {
+      const link = cleanPostUrl(post.link);
+      const entry = entryByUrl.get(link);
       const date = new Date(post.pubDate).toLocaleDateString('en-GB', {
         year: 'numeric', month: 'short', day: 'numeric'
       });
+      const kicker = entry && entry.category
+        ? `<span class="blog-kicker">${entry.category}</span>\n          `
+        : '';
+      const topics = entry && entry.tags && entry.tags.length
+        ? ` &middot; ${entry.tags.slice(0, 3).join(', ')}`
+        : '';
       return `
         <div class="blog-item fade-up">
-          <a class="blog-title" href="${cleanPostUrl(post.link)}" target="_blank" rel="noopener">${post.title}</a>
-          <div class="blog-date">${date}</div>
+          ${kicker}<a class="blog-title" href="${link}" target="_blank" rel="noopener">${post.title}</a>
+          <div class="blog-date">${date}${topics}</div>
         </div>
       `;
     }).join('');

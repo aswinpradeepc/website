@@ -21,14 +21,15 @@
       "date": "2026-07-15",
       "readingTime": "PT4M",
       "publication": "writeabyte",
+      "category": "LLM systems",
       "description": "Weighted ranking and constraint solvers both failed at trip planning. Why I rebuilt Picnix as an 8-node LangGraph state machine, and what tracing taught me.",
       "tags": [
         "LangGraph",
         "AI Agents",
+        "Observability",
         "LLM",
         "State Machines",
-        "Python",
-        "Observability"
+        "Python"
       ],
       "summary": "Google Maps says Idukki Dam closes at 6pm; entry actually stops at 5. ChatGPT sent a friend to Anamudi Peak, which has never been open to the public. Trip planning fails at validation, not at ideas. A weighted ranking algorithm was the first attempt and died on context — a weight can't reason, so a waterfall scores the same in monsoon and in drought. Reframing it as a constraint satisfaction problem failed differently: bike-friendliness, holiday crowd risk and \"vibe\" don't reduce to clean constraints. What worked was modelling the planning process itself as a state machine with an LLM call at each node — LangGraph, eight nodes, behind a Streamlit UI. Arize Phoenix tracing exposed what the logs had hidden. The graph's rigidity is what taught me the difference between a workflow and an agent.",
       "takeaways": [
@@ -47,15 +48,16 @@
       "date": "2026-07-22",
       "readingTime": "PT5M",
       "publication": "Stackademic",
+      "category": "Performance",
       "description": "Profiling before rewriting took a CPU-bound pricing API from 9s to under 2s: ProcessPoolExecutor past the GIL, asyncio.gather, connection pooling and Redis.",
       "tags": [
         "Python",
+        "asyncio",
+        "Redis",
         "FastAPI",
         "Performance",
         "Backend Development",
-        "Profiling",
-        "asyncio",
-        "Redis"
+        "Profiling"
       ],
       "summary": "A CPU-bound pricing API took nine seconds to respond under Locust. The first decision was to fix nothing: profile, sort by cost, then act. A small timing decorator instrumented the hot functions without editing every signature. The numbers pointed at sequential CPU work, external calls tangled into the calculation, and repeated hits to the same microservices. Refactoring to clean architecture came first, which made every later fix a one-place edit. ProcessPoolExecutor got past CPython's GIL — threads give concurrency, not parallelism, for CPU-bound work — taking 9s to under 4. Then asyncio.gather turned a sum of call latencies into the duration of the slowest one, a single app-level httpx.AsyncClient skipped repeat TCP + TLS handshakes, and Redis caching cut close to another second. Now roughly 3s cold, under 2s warm.",
       "takeaways": [
@@ -75,13 +77,14 @@
       "date": "2026-09-02",
       "readingTime": "PT8M",
       "publication": "writeabyte",
+      "category": "Self-hosting",
       "description": "Hard-linked incremental backups for a self-hosted Ente Photos library, and an overlayfs trick that restore-tests 230 GB without copying a byte or corrupting it.",
       "tags": [
+        "Linux",
+        "overlayfs",
+        "Backup",
         "Self-Hosting",
         "Homelab",
-        "Linux",
-        "Backup",
-        "overlayfs",
         "Ente",
         "systemd",
         "MinIO"

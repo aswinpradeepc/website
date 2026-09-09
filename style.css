@@ -759,6 +759,18 @@ a.subtle:hover {
   color: var(--muted);
 }
 
+/* Subject label above each post title, in the same uppercase mono register as
+   .page-label and .section-label. */
+.blog-kicker {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
 /* ── RICK ROLL ── */
 .rick-zone {
   padding: 1.5rem;
