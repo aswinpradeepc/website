@@ -301,6 +301,8 @@
       "url": "https://github.com/sunithvs/devb.io",
       "profile": "https://devb.io/aswinpradeepc",
       "image": "/images/projects/devbio.png",
+      "width": 1900,
+      "height": 933,
       "alt": "devb.io open source developer bio platform - Aswin Pradeep C contributor profile showcase"
     }
   ],
@@ -348,6 +350,8 @@
           "Open Source"
         ],
         "image": "/images/activities/aswinpradeepc-cloud-native-summit-2026.jpeg",
+        "width": 1280,
+        "height": 720,
         "alt": "Aswin Pradeep C at Cloud Native Summit Kerala 2026, with attendees and open source maintainers at the venue"
       },
       {
@@ -362,6 +366,8 @@
         ],
         "link": "https://www.linkedin.com/posts/aswinpradeepc_indiafoss2025-opensource-foss-ugcPost-7385247235103662080-hNKZ/",
         "image": "/images/activities/aswin-pradeep-c-india-foss-2025.jpeg",
+        "width": 1074,
+        "height": 806,
         "alt": "Aswin Pradeep C at IndiaFOSS 2025 conference representing devb.io open source developer bio platform stall"
       },
       {
@@ -436,6 +442,8 @@
           "Competition"
         ],
         "image": "/images/activities/aswin-pradeep-c-SSF-Thrissur.jpeg",
+        "width": 800,
+        "height": 800,
         "alt": "Aswin Pradeep C winning First Prize at Summer Startup Festival 2023 Project Expo competition GEC Thrissur"
       }
     ]

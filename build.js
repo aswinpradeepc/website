@@ -98,6 +98,54 @@ function renderFooter(meta) {
   `;
 }
 
+// The one Person entity for the whole site. Every page carried its own
+// hand-written copy that disagreed with the others — different jobTitle, fewer
+// sameAs links, no knowsAbout — so search engines and LLM retrieval saw several
+// slightly different people instead of one. Generated here from data.json and
+// baked over every page, with a stable @id the rest of the graph can point at.
+function renderPersonJsonLd(data) {
+  const { meta, skills, education } = data;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://aswinpradeepc.com/#person',
+    name: meta.name,
+    jobTitle: 'Backend Engineer',
+    description: meta.tagline,
+    url: 'https://aswinpradeepc.com',
+    image: 'https://aswinpradeepc.com/images/aswin-pradeep-c-profile-pic.jpg',
+    email: meta.email,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Kochi',
+      addressRegion: 'Kerala',
+      addressCountry: 'IN'
+    },
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: education.institution
+    },
+    // Flattened from the skills table, so the two can never drift apart.
+    knowsAbout: [...new Set(Object.values(skills).flat())],
+    sameAs: Object.values(meta.links)
+  };
+}
+
+// Replace a page's Person block with the canonical one. Matched by parsing each
+// ld+json block rather than by regex, so the Blog graph on /blog is left alone.
+function bakePerson(html, personLd) {
+  const body = JSON.stringify(personLd, null, 2);
+  return html.replace(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+    (block, json) => {
+      let parsed;
+      try { parsed = JSON.parse(json); } catch { return block; }
+      if (parsed['@type'] !== 'Person') return block;
+      return `<script type="application/ld+json">\n${body}\n  </script>`;
+    }
+  );
+}
+
 // Inline the footer markup and drop the now-redundant footer.js script tag.
 function bakeFooter(html, meta) {
   return html
@@ -106,6 +154,12 @@ function bakeFooter(html, meta) {
       `<footer id="footer">${renderFooter(meta)}</footer>`
     )
     .replace(/\s*<script src="\/?footer\.js"><\/script>/, '');
+}
+
+// Everything every page gets at build time: the pre-rendered footer, and the
+// one canonical Person entity.
+function bakePage(html, meta, personLd) {
+  return bakePerson(bakeFooter(html, meta), personLd);
 }
 
 // Build the _redirects file: the hand-written rules, plus one short link per
@@ -141,6 +195,7 @@ function buildRedirects(blog) {
 
   const data = JSON.parse(fs.readFileSync('./data.json', 'utf8'));
   const distDir = './dist';
+  const personLd = renderPersonJsonLd(data);
 
   // Clean and create dist directory
   if (fs.existsSync(distDir)) {
@@ -189,7 +244,7 @@ function buildRedirects(blog) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'index.html'), bakeFooter(indexHtml, meta));
+  fs.writeFileSync(path.join(distDir, 'index.html'), bakePage(indexHtml, meta, personLd));
 
   // ═══════════════════════════════════════════════════════════
   // 2. EXPERIENCE
@@ -287,7 +342,7 @@ function buildRedirects(blog) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'experience.html'), bakeFooter(expHtml, meta));
+  fs.writeFileSync(path.join(distDir, 'experience.html'), bakePage(expHtml, meta, personLd));
 
   // ═══════════════════════════════════════════════════════════
   // 3. PROJECTS
@@ -336,7 +391,7 @@ function buildRedirects(blog) {
       const altText = o.alt || `${o.project} - ${o.desc}`;
       imageHtml = `
         <div class="event-image">
-          <img src="${o.image}" alt="${altText}" loading="lazy" />
+          <img src="${o.image}" alt="${altText}" width="${o.width}" height="${o.height}" loading="lazy" decoding="async" />
         </div>
       `;
     }
@@ -393,7 +448,7 @@ function buildRedirects(blog) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'projects.html'), bakeFooter(projHtml, meta));
+  fs.writeFileSync(path.join(distDir, 'projects.html'), bakePage(projHtml, meta, personLd));
 
   // ═══════════════════════════════════════════════════════════
   // 4. ACTIVITIES
@@ -413,7 +468,7 @@ function buildRedirects(blog) {
         const altText = e.alt || `Aswin Pradeep C - ${e.title} ${e.subtitle}`;
         imageHtml = `
           <div class="event-image">
-            <img src="${e.image}" alt="${altText}" loading="lazy" />
+            <img src="${e.image}" alt="${altText}" width="${e.width}" height="${e.height}" loading="lazy" decoding="async" />
           </div>
         `;
       }
@@ -484,7 +539,7 @@ function buildRedirects(blog) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'activities.html'), bakeFooter(actHtml, meta));
+  fs.writeFileSync(path.join(distDir, 'activities.html'), bakePage(actHtml, meta, personLd));
 
   // ═══════════════════════════════════════════════════════════
   // 5. CONTACT
@@ -540,7 +595,7 @@ function buildRedirects(blog) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'contact.html'), contactHtml);
+  fs.writeFileSync(path.join(distDir, 'contact.html'), bakePage(contactHtml, meta, personLd));
 
   // ═══════════════════════════════════════════════════════════
   // 6. BLOG (Fetch Medium RSS)
@@ -587,7 +642,7 @@ function buildRedirects(blog) {
     '</body>'
   );
 
-  fs.writeFileSync(path.join(distDir, 'worth-your-time.html'), bakeFooter(worthHtml, meta));
+  fs.writeFileSync(path.join(distDir, 'worth-your-time.html'), bakePage(worthHtml, meta, personLd));
 
   console.log('📄 Building blog.html...');
   let blogPageHtml = fs.readFileSync('./blog.html', 'utf8');
@@ -723,7 +778,7 @@ function buildRedirects(blog) {
   );
   console.log(`   ✓ structured data for ${described.length} post${described.length === 1 ? '' : 's'}`);
 
-  fs.writeFileSync(path.join(distDir, 'blog.html'), bakeFooter(blogPageHtml, meta));
+  fs.writeFileSync(path.join(distDir, 'blog.html'), bakePage(blogPageHtml, meta, personLd));
 
   // ── llms.txt ──
   // Plain-text site map for language models: an emerging convention, and the
@@ -773,7 +828,7 @@ ${(p.takeaways || []).map(t => `- ${plain(t)}`).join('\n')}`).join('\n\n')}
 
   // 404 gets the same baked footer as every other page
   const notFoundHtml = fs.readFileSync('./404.html', 'utf8');
-  fs.writeFileSync(path.join(distDir, '404.html'), bakeFooter(notFoundHtml, meta));
+  fs.writeFileSync(path.join(distDir, '404.html'), bakePage(notFoundHtml, meta, personLd));
 
   console.log('\n📦 Copying static assets...');
 
