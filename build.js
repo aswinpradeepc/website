@@ -401,8 +401,8 @@ function buildRedirects(blog) {
         <div class="oss-name">${o.project}</div>
         <p class="oss-desc">${o.desc}</p>
         <div class="oss-links">
-          <a class="subtle" href="${o.url}"     target="_blank" rel="noopener">Repository ↗</a>
-          <a class="subtle" href="${o.profile}" target="_blank" rel="noopener">My profile ↗</a>
+          <a class="subtle" href="${o.url}" target="_blank" rel="noopener">Repository ↗</a>
+          ${o.link ? `<a class="subtle" href="${o.link.href}" target="_blank" rel="noopener">${o.link.label} ↗</a>` : ''}
         </div>
         ${imageHtml}
       </div>
@@ -416,15 +416,15 @@ function buildRedirects(blog) {
     </div>
 
     <section>
-      <span class="section-label">Selected work</span>
-      ${projectItems}
+      <span class="section-label">Open Source</span>
+      ${ossItems}
     </section>
 
     <hr class="divider">
 
     <section>
-      <span class="section-label">Open Source</span>
-      ${ossItems}
+      <span class="section-label">Selected work</span>
+      ${projectItems}
     </section>
 
     <hr class="divider">
@@ -686,10 +686,18 @@ function buildRedirects(blog) {
       const topics = entry && entry.tags && entry.tags.length
         ? ` &middot; ${entry.tags.slice(0, 3).join(', ')}`
         : '';
+      // Optional one-line footnote on a post — where it got picked up, and by
+      // whom. Links out when the note carries a href, otherwise it's just a chip.
+      const n = entry && entry.note;
+      const note = n
+        ? (n.href
+            ? `\n          <a class="blog-note" href="${n.href}" target="_blank" rel="noopener">${n.text} &#8599;</a>`
+            : `\n          <span class="blog-note">${n.text}</span>`)
+        : '';
       return `
         <div class="blog-item fade-up">
           ${kicker}<a class="blog-title" href="${link}" target="_blank" rel="noopener">${post.title}</a>
-          <div class="blog-date">${date}${topics}</div>
+          <div class="blog-date">${date}${topics}</div>${note}
         </div>
       `;
     }).join('');
@@ -797,7 +805,7 @@ Posts are published on Medium; the summaries below are written for this file.
 
 ${[...described].sort((x, y) => y.date.localeCompare(x.date)).map(p => `### ${p.title}
 Published ${p.date}${p.publication ? ` in ${p.publication}` : ''} · ${p.url}
-Topics: ${(p.tags || []).join(', ')}
+Topics: ${(p.tags || []).join(', ')}${p.note ? `\n${plain(p.note.text)}${p.note.href ? ` · ${p.note.href}` : ''}` : ''}
 
 ${p.summary}
 

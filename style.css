@@ -758,6 +758,41 @@ a.subtle:hover {
   color: var(--muted);
 }
 
+/* Footnote under a post — where it got picked up, and by whom. A bordered chip
+   in the same register as .tag. */
+.blog-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--faint);
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  text-decoration: none;
+  background: var(--faintest);
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+
+a.blog-note:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+/* The dot that marks it as a note rather than another row of metadata. */
+.blog-note::before {
+  content: "";
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+
 /* Subject label above each post title, in the same uppercase mono register as
    .page-label and .section-label. */
 .blog-kicker {

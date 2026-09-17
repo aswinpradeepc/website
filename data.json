@@ -78,6 +78,10 @@
       "readingTime": "PT8M",
       "publication": "writeabyte",
       "category": "Self-hosting",
+      "note": {
+        "text": "Reshared by the Ente team",
+        "href": "https://lnkd.in/p/eRaevNvi"
+      },
       "description": "Hard-linked incremental backups for a self-hosted Ente Photos library, and an overlayfs trick that restore-tests 230 GB without copying a byte or corrupting it.",
       "tags": [
         "Linux",
@@ -240,6 +244,18 @@
   ],
   "moreProjects": [
     {
+      "name": "ente-backup",
+      "desc": "Verifiable, space-efficient backups for a self-hosted Ente stack — hardlinked snapshots and a restore tool that proves a backup is restorable without copying the whole library.",
+      "tech": [
+        "Bash",
+        "rsync",
+        "overlayfs",
+        "systemd"
+      ],
+      "github": "https://github.com/aswinpradeepc/ente-backup",
+      "live": null
+    },
+    {
       "name": "LinkRadr",
       "desc": "Scalable URL shortener with custom links, OTP-based sign-in, and Docker + GitHub Actions CI/CD on AWS EC2.",
       "tech": [
@@ -296,10 +312,22 @@
   ],
   "opensource": [
     {
+      "project": "Ente",
+      "desc": "End-to-end encrypted photo storage, which I also self-host. Contributor — with a merged pull request to the main repository.",
+      "url": "https://github.com/ente/ente",
+      "link": {
+        "label": "Merged PR",
+        "href": "https://github.com/ente/ente/pull/12818"
+      }
+    },
+    {
       "project": "devb.io",
       "desc": "Open-source developer bio platform. Contributor — building tools that help developers present themselves better.",
       "url": "https://github.com/sunithvs/devb.io",
-      "profile": "https://devb.io/aswinpradeepc",
+      "link": {
+        "label": "My profile",
+        "href": "https://devb.io/aswinpradeepc"
+      },
       "image": "/images/projects/devbio.png",
       "width": 1900,
       "height": 933,
